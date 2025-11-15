@@ -43,7 +43,7 @@ learn-python/
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/learn-python.git
+   git clone https://github.com/jjaspreetsingh/learn-python.git
    ```
 
 2. Navigate to the project directory:
