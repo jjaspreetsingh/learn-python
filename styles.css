@@ -160,6 +160,40 @@ footer {
     text-decoration: none;
 }
 
+/* Call-to-Action Buttons */
+.cta-primary {
+    display: inline-block;
+    background-color: #58a6ff;
+    color: #0d1117;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 1rem;
+    transition: background-color 0.3s;
+}
+
+.cta-primary:hover {
+    background-color: #79c0ff;
+}
+
+.cta-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: #58a6ff;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border: 2px solid #58a6ff;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-secondary:hover {
+    background-color: #58a6ff;
+    color: #0d1117;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     header h1 {
