@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API Project - Learn Python</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>REST API with Flask/FastAPI</h2>
+            <p>Build a web API that handles HTTP requests and responses. This project demonstrates server-side development, data serialization, and RESTful design principles.</p>
+
+            <h3>Project Requirements</h3>
+            <ul>
+                <li>Create endpoints for CRUD operations (Create, Read, Update, Delete)</li>
+                <li>Handle JSON data serialization</li>
+                <li>Implement proper HTTP status codes</li>
+                <li>Add input validation and error handling</li>
+                <li>Use a simple in-memory data store</li>
+            </ul>
+
+            <h3>Sample Implementation (Flask)</h3>
+            <div class="example">
+                <h4>api.py</h4>
+                <pre><code>from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+items = []
+
+@app.route('/items', methods=['GET'])
+def get_items():
+    return jsonify(items)
+
+@app.route('/items', methods=['POST'])
+def create_item():
+    data = request.get_json()
+    if not data or 'name' not in data:
+        return jsonify({'error': 'Name is required'}), 400
+    
+    item = {'id': len(items) + 1, 'name': data['name']}
+    items.append(item)
+    return jsonify(item), 201
+
+@app.route('/items/&lt;int:item_id&gt;', methods=['GET'])
+def get_item(item_id):
+    item = next((item for item in items if item['id'] == item_id), None)
+    if item is None:
+        return jsonify({'error': 'Item not found'}), 404
+    return jsonify(item)
+
+@app.route('/items/&lt;int:item_id&gt;', methods=['PUT'])
+def update_item(item_id):
+    item = next((item for item in items if item['id'] == item_id), None)
+    if item is None:
+        return jsonify({'error': 'Item not found'}), 404
+    
+    data = request.get_json()
+    if not data or 'name' not in data:
+        return jsonify({'error': 'Name is required'}), 400
+    
+    item['name'] = data['name']
+    return jsonify(item)
+
+@app.route('/items/&lt;int:item_id&gt;', methods=['DELETE'])
+def delete_item(item_id):
+    global items
+    items = [item for item in items if item['id'] != item_id]
+    return '', 204
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+            </div>
+
+            <h3>Extensions</h3>
+            <ul>
+                <li>Add authentication and authorization</li>
+                <li>Integrate with a database (SQLite, PostgreSQL)</li>
+                <li>Implement pagination for large datasets</li>
+                <li>Add API documentation with Swagger/OpenAPI</li>
+                <li>Deploy to a cloud platform (Heroku, AWS)</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

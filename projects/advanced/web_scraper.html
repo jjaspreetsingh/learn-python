@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper Project - Learn Python</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>Web Scraper with Rate Limiting</h2>
+            <p>Create a tool to extract data from websites responsibly. This project demonstrates web scraping, HTML parsing, and ethical automation practices.</p>
+
+            <h3>Project Requirements</h3>
+            <ul>
+                <li>Fetch web pages using requests library</li>
+                <li>Parse HTML content with BeautifulSoup</li>
+                <li>Implement rate limiting to avoid overwhelming servers</li>
+                <li>Handle common scraping challenges (User-Agent, delays)</li>
+                <li>Save extracted data to a file or database</li>
+            </ul>
+
+            <h3>Sample Implementation</h3>
+            <div class="example">
+                <h4>scraper.py</h4>
+                <pre><code>import requests
+from bs4 import BeautifulSoup
+import time
+import csv
+
+def scrape_quotes(url, max_pages=5):
+    quotes = []
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }
+    
+    for page in range(1, max_pages + 1):
+        try:
+            response = requests.get(f"{url}/page/{page}/", headers=headers)
+            response.raise_for_status()
+            
+            soup = BeautifulSoup(response.content, 'html.parser')
+            quote_elements = soup.find_all('div', class_='quote')
+            
+            for quote_elem in quote_elements:
+                text = quote_elem.find('span', class_='text').get_text()
+                author = quote_elem.find('small', class_='author').get_text()
+                quotes.append({'text': text, 'author': author})
+            
+            # Rate limiting - wait 1 second between requests
+            time.sleep(1)
+            
+        except requests.RequestException as e:
+            print(f"Error scraping page {page}: {e}")
+            break
+    
+    return quotes
+
+def save_to_csv(quotes, filename='quotes.csv'):
+    if not quotes:
+        return
+    
+    with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
+        fieldnames = ['text', 'author']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(quotes)
+
+if __name__ == "__main__":
+    url = "http://quotes.toscrape.com"
+    quotes = scrape_quotes(url)
+    save_to_csv(quotes)
+    print(f"Scraped {len(quotes)} quotes and saved to quotes.csv")</code></pre>
+            </div>
+
+            <h3>Extensions</h3>
+            <ul>
+                <li>Add proxy rotation for large-scale scraping</li>
+                <li>Implement headless browser scraping with Selenium</li>
+                <li>Add data cleaning and validation</li>
+                <li>Create a web interface for the scraper</li>
+                <li>Store data in a database instead of CSV</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

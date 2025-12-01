@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pipeline Project - Learn Python</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>Data Pipeline (ETL)</h2>
+            <p>Construct an automated system to extract, transform, and load data. This project demonstrates workflow automation, data processing, and pipeline design.</p>
+
+            <h3>Project Requirements</h3>
+            <ul>
+                <li>Extract data from multiple sources (CSV, API, database)</li>
+                <li>Transform data (cleaning, validation, aggregation)</li>
+                <li>Load data into a target system</li>
+                <li>Implement error handling and logging</li>
+                <li>Add scheduling for automated execution</li>
+            </ul>
+
+            <h3>Sample Implementation</h3>
+            <div class="example">
+                <h4>etl_pipeline.py</h4>
+                <pre><code>import pandas as pd
+import requests
+import sqlite3
+import logging
+from datetime import datetime
+
+# Set up logging
+logging.basicConfig(filename='etl_pipeline.log', level=logging.INFO,
+                   format='%(asctime)s - %(levelname)s - %(message)s')
+
+class ETLPipeline:
+    def __init__(self):
+        self.db_path = 'pipeline_data.db'
+        self.setup_database()
+    
+    def setup_database(self):
+        """Create database tables"""
+        conn = sqlite3.connect(self.db_path)
+        conn.execute('''
+            CREATE TABLE IF NOT EXISTS sales_data (
+                id INTEGER PRIMARY KEY,
+                date TEXT,
+                product TEXT,
+                quantity INTEGER,
+                price REAL,
+                total REAL,
+                processed_at TEXT
+            )
+        ''')
+        conn.commit()
+        conn.close()
+    
+    def extract_csv(self, file_path):
+        """Extract data from CSV file"""
+        try:
+            df = pd.read_csv(file_path)
+            logging.info(f"Extracted {len(df)} rows from CSV")
+            return df
+        except Exception as e:
+            logging.error(f"Error extracting CSV: {e}")
+            return None
+    
+    def extract_api(self, url):
+        """Extract data from API"""
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            data = response.json()
+            df = pd.DataFrame(data)
+            logging.info(f"Extracted {len(df)} rows from API")
+            return df
+        except Exception as e:
+            logging.error(f"Error extracting from API: {e}")
+            return None
+    
+    def transform(self, df):
+        """Transform and clean data"""
+        try:
+            # Remove duplicates
+            df = df.drop_duplicates()
+            
+            # Handle missing values
+            df = df.dropna(subset=['product', 'quantity', 'price'])
+            
+            # Calculate total if not present
+            if 'total' not in df.columns:
+                df['total'] = df['quantity'] * df['price']
+            
+            # Add processing timestamp
+            df['processed_at'] = datetime.now().isoformat()
+            
+            # Validate data types
+            df['quantity'] = pd.to_numeric(df['quantity'], errors='coerce')
+            df['price'] = pd.to_numeric(df['price'], errors='coerce')
+            df['total'] = pd.to_numeric(df['total'], errors='coerce')
+            
+            logging.info(f"Transformed data: {len(df)} rows after cleaning")
+            return df
+        except Exception as e:
+            logging.error(f"Error transforming data: {e}")
+            return None
+    
+    def load(self, df):
+        """Load data into database"""
+        try:
+            conn = sqlite3.connect(self.db_path)
+            df.to_sql('sales_data', conn, if_exists='append', index=False)
+            conn.commit()
+            conn.close()
+            logging.info(f"Loaded {len(df)} rows into database")
+            return True
+        except Exception as e:
+            logging.error(f"Error loading data: {e}")
+            return False
+    
+    def run_pipeline(self):
+        """Run the complete ETL pipeline"""
+        logging.info("Starting ETL pipeline")
+        
+        # Extract from multiple sources
+        csv_data = self.extract_csv('sample_sales.csv')
+        api_data = self.extract_api('https://api.example.com/sales')
+        
+        # Combine data
+        if csv_data is not None and api_data is not None:
+            combined_data = pd.concat([csv_data, api_data], ignore_index=True)
+        elif csv_data is not None:
+            combined_data = csv_data
+        elif api_data is not None:
+            combined_data = api_data
+        else:
+            logging.error("No data extracted from any source")
+            return False
+        
+        # Transform
+        transformed_data = self.transform(combined_data)
+        if transformed_data is None:
+            return False
+        
+        # Load
+        success = self.load(transformed_data)
+        
+        logging.info("ETL pipeline completed")
+        return success
+
+if __name__ == "__main__":
+    pipeline = ETLPipeline()
+    pipeline.run_pipeline()</code></pre>
+            </div>
+
+            <h3>Extensions</h3>
+            <ul>
+                <li>Add data quality checks and validation rules</li>
+                <li>Implement incremental loading (only new/changed data)</li>
+                <li>Add monitoring and alerting for pipeline failures</li>
+                <li>Create a web dashboard to visualize pipeline metrics</li>
+                <li>Deploy pipeline to cloud infrastructure (AWS Lambda, Google Cloud)</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

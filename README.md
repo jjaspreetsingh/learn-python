@@ -2,6 +2,8 @@
 
 This repository contains an interactive website for learning Python programming. It provides structured tutorials, code examples, project ideas, and useful resources to help beginners and intermediate learners master Python.
 
+**Live Website**: [https://jjaspreetsingh.github.io/learn-python/](https://jjaspreetsingh.github.io/learn-python/)
+
 ## Overview
 
 The website is organized into sections covering Python fundamentals, intermediate concepts, practical projects, and learning resources. Each topic includes clear explanations, code examples, and hands-on exercises.
@@ -28,7 +30,13 @@ learn-python/
 ├── projects/                  # Project tutorials
 │   ├── calculator.html
 │   ├── data_analysis.html
-│   └── todo_app.html
+│   ├── todo_app.html
+│   └── advanced/              # Advanced project tutorials
+│       ├── rest_api.html
+│       ├── web_scraper.html
+│       ├── chat_app.html
+│       ├── data_pipeline.html
+│       └── deployment_script.html
 │
 └── resources/                 # Learning aids
     ├── cheat_sheets.html
@@ -60,7 +68,8 @@ learn-python/
 1. **Basics**: Start with variables, conditionals, and loops
 2. **Intermediate**: Learn functions, classes, and file handling
 3. **Projects**: Apply knowledge with calculator, data analysis, and todo app
-4. **Resources**: Explore additional learning materials and communities
+4. **Advanced**: Dive into specialized topics like REST APIs, web scraping, and deployment
+5. **Resources**: Explore additional learning materials and communities
 
 ## Requirements
 
