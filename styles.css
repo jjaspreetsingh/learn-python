@@ -132,6 +132,20 @@ footer {
     margin-top: 2rem;
 }
 
+.footer-content {
+    margin-bottom: 1rem;
+}
+
+.footer-content a {
+    color: #58a6ff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
 .back-link {
     display: inline-block;
     margin-bottom: 1rem;
@@ -286,17 +300,19 @@ main {
     padding: 0.5rem;
     border: 1px solid #58a6ff;
     border-radius: 5px;
-    background: #161b22;
+    background: #0d1117;
     color: #c9d1d9;
+    width: 200px;
+    font-size: 0.9rem;
 }
 
-#theme-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #f0f6fc;
+#search-input:focus {
+    outline: none;
+    border-color: #79c0ff;
+    box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);
 }
+
+
 
 /* Dark mode styles */
 .dark-mode {

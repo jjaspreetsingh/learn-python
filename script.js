@@ -39,20 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateProgress();
 });
 
-// Dark mode toggle
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    themeToggle.textContent = isDark ? '☀️' : '🌙';
-});
-
-// Load theme on page load
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-    themeToggle.textContent = '☀️';
-}
+// Dark mode is always enabled
+document.body.classList.add('dark-mode');
 
 // Register service worker
 if ('serviceWorker' in navigator) {
