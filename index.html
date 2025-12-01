@@ -11,84 +11,14 @@
 <body>
     <header>
         <h1>Learn Python</h1>
-        <nav>
-            <a href="#basics">Basics</a>
-            <a href="#intermediate">Intermediate</a>
-            <a href="#projects">Projects</a>
-            <a href="#advanced">Advanced</a>
-            <a href="#resources">Resources</a>
-            <a href="#community">Community</a>
-        </nav>
-
     </header>
 
-    <aside id="sidebar">
-        <div class="sidebar-header">
-            <h2>Learning Modules</h2>
-            <div class="progress-tracker">
-                <span>Overall Progress: <span id="overall-progress">0%</span></span>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
-            </div>
-        </div>
-        <nav class="sidebar-nav">
-            <div class="module">
-                <h3>Basics <span class="module-progress" id="basics-progress">0/3</span></h3>
-                <ul>
-                    <li><a href="basics/variables.html" class="lesson-link" data-lesson="variables">Variables & Data Types</a></li>
-                    <li><a href="basics/conditionals.html" class="lesson-link" data-lesson="conditionals">Conditionals</a></li>
-                    <li><a href="basics/loops.html" class="lesson-link" data-lesson="loops">Loops</a></li>
-                </ul>
-            </div>
-            <div class="module">
-                <h3>Intermediate <span class="module-progress" id="intermediate-progress">0/3</span></h3>
-                <ul>
-                    <li><a href="intermediate/functions.html" class="lesson-link" data-lesson="functions">Functions</a></li>
-                    <li><a href="intermediate/classes.html" class="lesson-link" data-lesson="classes">Classes & Objects</a></li>
-                    <li><a href="intermediate/file_handling.html" class="lesson-link" data-lesson="file_handling">File Handling</a></li>
-                </ul>
-            </div>
-            <div class="module">
-                <h3>Projects <span class="module-progress" id="projects-progress">0/5</span></h3>
-                <ul>
-                    <li><a href="projects/calculator.html" class="lesson-link" data-lesson="calculator">Calculator</a></li>
-                    <li><a href="projects/todo_app.html" class="lesson-link" data-lesson="todo_app">Todo App</a></li>
-                    <li><a href="projects/data_analysis.html" class="lesson-link" data-lesson="data_analysis">Data Analysis</a></li>
-                    <li><a href="projects/advanced/rest_api.html" class="lesson-link" data-lesson="rest_api">REST API</a></li>
-                    <li><a href="projects/advanced/web_scraper.html" class="lesson-link" data-lesson="web_scraper">Web Scraper</a></li>
-                </ul>
-            </div>
-            <div class="module">
-                <h3>Advanced <span class="module-progress" id="advanced-progress">0/10</span></h3>
-                <ul>
-                    <li>Async/Await</li>
-                    <li>Networking</li>
-                    <li>Web Apps</li>
-                    <li>Data Pipelines</li>
-                    <li>Testing</li>
-                    <li>Deployment</li>
-                    <li>Databases</li>
-                    <li>Security</li>
-                    <li>Performance</li>
-                    <li>Open Source</li>
-                </ul>
-            </div>
-            <div class="module">
-                <h3>Community</h3>
-                <ul>
-                    <li><a href="#forum">Forum</a></li>
-                    <li><a href="#qa">Q&A</a></li>
-                    <li><a href="#showcase">Project Showcase</a></li>
-                </ul>
-            </div>
-        </nav>
-    </aside>
+
 
     <main>
         <section id="hero">
             <h2>Master Python from Basics to Advanced Applications</h2>
-            <p>This site guides complete beginners, self-taught developers, and advanced learners through Python programming. You'll build real applications, automate tasks, and deploy projects confidently. Follow our structured path: start with Basics, advance through Intermediate concepts, apply skills in Projects, and explore Advanced topics like async programming and web frameworks.</p>
+            <p>This site guides complete beginners and self-taught developers through Python programming. You'll build real applications and automate tasks confidently. Follow our structured path: start with Basics, advance through Intermediate concepts, and apply skills in Projects.</p>
             <a href="#basics" class="cta-primary">Start the Basics Path</a>
             <a href="#advanced" class="cta-secondary">Browse Advanced Topics</a>
         </section>
@@ -100,16 +30,13 @@
                 <li><strong>Basics</strong>: Learn core syntax and concepts to write simple programs and understand Python fundamentals.</li>
                 <li><strong>Intermediate</strong>: Master functions, classes, and file handling to build more complex scripts and applications.</li>
                 <li><strong>Projects</strong>: Apply your knowledge to real problems, creating tools and apps that solve practical tasks.</li>
-                <li><strong>Advanced</strong>: Dive into specialized topics like concurrency, networking, and deployment to handle professional-level challenges.</li>
             </ol>
         </section>
 
         <section id="basics">
             <h2>Build a Strong Foundation</h2>
             <p>In this section, you'll learn Python's core syntax and basic concepts, enabling you to write simple programs and understand how code works. By the end, you'll confidently create scripts for everyday tasks and feel ready to tackle more complex problems.</p>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rfscVS0vtbw" title="Python Basics Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            </div>
+            <p><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank">Watch Python Basics Tutorial on YouTube</a></p>
             <ul>
                 <li><a href="basics/variables.html">Variables & Data Types</a> - Store and manipulate different types of information, such as numbers and text, to build dynamic programs.</li>
                 <li><a href="basics/conditionals.html">Conditionals</a> - Make decisions in your code with if/else statements, allowing programs to respond to different situations.</li>
@@ -149,22 +76,7 @@
              </ul>
         </section>
 
-        <section id="advanced">
-            <h2>Push Your Skills Further</h2>
-            <p>For learners ready to go beyond the basics, this section covers specialized topics that prepare you for professional development. You'll explore advanced techniques to build scalable applications, handle complex systems, and contribute to real projects.</p>
-            <ul>
-                <li>Async/Await and Concurrency - Learn to write non-blocking code for efficient multitasking, enabling faster and more responsive applications.</li>
-                <li>Networking (HTTP, Sockets, Web APIs) - Build connections between systems, fetching data from APIs and creating networked applications.</li>
-                <li>Building Web Apps with Flask/Django - Develop full web applications using popular frameworks, from simple sites to complex backends.</li>
-                <li>Data Pipelines and Automation - Create automated workflows to process and transform data at scale.</li>
-                <li>Testing and Debugging - Write reliable code with comprehensive tests and effective debugging techniques.</li>
-                <li>Deployment (Docker, Cloud, CI/CD) - Deploy applications to production environments using containers and automated pipelines.</li>
-                <li>Working with Databases (SQL, ORM) - Store and query data efficiently with relational databases and object-relational mappers.</li>
-                <li>Security Best Practices - Protect applications from common vulnerabilities and implement secure coding habits.</li>
-                <li>Performance Optimization - Improve code speed and efficiency for high-performance applications.</li>
-                <li>Contributing to Open Source - Collaborate on public projects, learning version control and community-driven development.</li>
-            </ul>
-        </section>
+
 
         <section id="resources">
             <h2>Additional Tools and References</h2>
@@ -175,19 +87,7 @@
             </ul>
         </section>
 
-        <section id="community">
-            <h2>Join the Community</h2>
-            <p>Connect with fellow learners, get help, and share your projects.</p>
-            <div class="community-links">
-                <a href="https://discord.gg/python" class="cta-primary">Join Discord</a>
-                <a href="https://stackoverflow.com/questions/tagged/python" class="cta-secondary">Stack Overflow</a>
-                <a href="#showcase" class="cta-secondary">Project Showcase</a>
-            </div>
-            <div id="forum-placeholder">
-                <h3>Forum (Coming Soon)</h3>
-                <p>Discuss lessons, ask questions, and collaborate.</p>
-            </div>
-        </section>
+
 
         <section id="trust">
             <h3>Who This Is For</h3>
@@ -200,7 +100,7 @@
             <ul>
                 <li><strong>Do I need programming experience?</strong> No, we start from absolute basics.</li>
                 <li><strong>How long does it take to learn?</strong> Progress at your own pace; most complete the basics in a few weeks.</li>
-                <li><strong>Is there advanced content?</strong> Yes, for those ready to explore topics like async programming and deployment.</li>
+
                 <li><strong>Can I build real projects?</strong> Absolutely—our projects section guides you through practical applications.</li>
             </ul>
         </section>
@@ -208,10 +108,15 @@
 
     <footer>
         <div class="footer-content">
+            <nav>
+                <a href="#basics">Basics</a>
+                <a href="#intermediate">Intermediate</a>
+                <a href="#projects">Projects</a>
+                <a href="#resources">Resources</a>
+            </nav>
             <a href="#top">Home</a> | <a href="#sitemap">Sitemap</a>
             <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
         </div>
-        <p>Happy coding! 🚀</p>
 <p>&copy; 2025 All rights reserved.</p>
     </footer>
 </body>

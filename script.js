@@ -1,43 +1,4 @@
-// Progress tracking using localStorage
-const lessons = {
-    basics: ['variables', 'conditionals', 'loops'],
-    intermediate: ['functions', 'classes', 'file_handling'],
-    projects: ['calculator', 'todo_app', 'data_analysis', 'rest_api', 'web_scraper']
-};
 
-function updateProgress() {
-    let totalCompleted = 0;
-    let totalLessons = 0;
-
-    Object.keys(lessons).forEach(module => {
-        const moduleLessons = lessons[module];
-        let completed = 0;
-        moduleLessons.forEach(lesson => {
-            if (localStorage.getItem(`lesson_${lesson}`) === 'completed') {
-                completed++;
-                totalCompleted++;
-            }
-        });
-        totalLessons += moduleLessons.length;
-        document.getElementById(`${module}-progress`).textContent = `${completed}/${moduleLessons.length}`;
-    });
-
-    const overallPercent = Math.round((totalCompleted / totalLessons) * 100);
-    document.getElementById('overall-progress').textContent = `${overallPercent}%`;
-    document.getElementById('progress-fill').style.width = `${overallPercent}%`;
-}
-
-// Mark lesson as completed when clicked
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.lesson-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            const lesson = e.target.dataset.lesson;
-            localStorage.setItem(`lesson_${lesson}`, 'completed');
-            updateProgress();
-        });
-    });
-    updateProgress();
-});
 
 // Dark mode is always enabled
 document.body.classList.add('dark-mode');
