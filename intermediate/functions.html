@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions - Learn Python</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>Functions</h2>
+            <p>Functions are reusable blocks of code that perform a specific task. They help organize code and avoid repetition.</p>
+
+            <h3>Defining Functions</h3>
+            <p>Use the <code>def</code> keyword to define a function:</p>
+            <pre><code>def function_name(parameters):
+    # code block
+    return value</code></pre>
+
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>def greet(name):
+    return f"Hello, {name}!"
+
+message = greet("Alice")
+print(message)  # Output: Hello, Alice!</code></pre>
+            </div>
+
+            <h3>Parameters and Arguments</h3>
+            <ul>
+                <li><strong>Parameters:</strong> Variables in the function definition</li>
+                <li><strong>Arguments:</strong> Values passed to the function when calling it</li>
+            </ul>
+
+            <div class="example">
+                <h4>Multiple parameters:</h4>
+                <pre><code>def add_numbers(a, b):
+    return a + b
+
+result = add_numbers(5, 3)
+print(result)  # Output: 8</code></pre>
+            </div>
+
+            <h3>Default Parameters</h3>
+            <p>You can provide default values for parameters:</p>
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+print(greet("Bob"))  # Output: Hello, Bob!
+print(greet("Bob", "Hi"))  # Output: Hi, Bob!</code></pre>
+            </div>
+
+            <h3>Return Statement</h3>
+            <p>The <code>return</code> statement sends a value back to the caller. If no return statement, the function returns <code>None</code>.</p>
+
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>def calculate_area(length, width):
+    area = length * width
+    return area
+
+result = calculate_area(5, 3)
+print(result)  # Output: 15</code></pre>
+            </div>
+
+            <h3>Scope</h3>
+            <p>Variables defined inside a function are local to that function. Variables defined outside are global.</p>
+
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>global_var = "I'm global"
+
+def my_function():
+    local_var = "I'm local"
+    print(global_var)  # Can access global
+    print(local_var)   # Can access local
+
+my_function()
+# print(local_var)  # This would cause an error</code></pre>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

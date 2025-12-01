@@ -1,42 +1,38 @@
 # Learn Python
 
-This repository is designed as a personal learning playground for improving Python programming skills. It contains exercises, mini-projects, notes, and references that help explore Python's core concepts and libraries in a structured way.
+This repository contains an interactive website for learning Python programming. It provides structured tutorials, code examples, project ideas, and useful resources to help beginners and intermediate learners master Python.
 
 ## Overview
 
-The goal of this project is to develop a hands-on understanding of Python through practical coding examples. Each directory focuses on a specific topic and grows in complexity as the project progresses.
+The website is organized into sections covering Python fundamentals, intermediate concepts, practical projects, and learning resources. Each topic includes clear explanations, code examples, and hands-on exercises.
 
-## Repository Structure
+## Website Structure
 
 ```
 learn-python/
 │
-├── basics/
-│   ├── variables.py
-│   ├── conditionals.py
-│   └── loops.py
+├── index.html                 # Main homepage
+├── styles.css                 # GitHub Dark theme styles
+├── README.md                  # This file
 │
-├── intermediate/
-│   ├── functions.py
-│   ├── classes_and_objects.py
-│   └── file_handling.py
+├── basics/                    # Python fundamentals
+│   ├── variables.html
+│   ├── conditionals.html
+│   └── loops.html
 │
-├── projects/
-│   ├── calculator/
-│   │   ├── calculator.py
-│   │   └── README.md
-│   ├── todo_app/
-│   │   ├── todo.py
-│   │   └── README.md
-│   └── data_analysis/
-│       ├── data_analysis.py
-│       └── README.md
+├── intermediate/              # Advanced concepts
+│   ├── functions.html
+│   ├── classes.html
+│   └── file_handling.html
 │
-├── resources/
-│   ├── cheat_sheets.md
-│   └── useful_links.md
+├── projects/                  # Project tutorials
+│   ├── calculator.html
+│   ├── data_analysis.html
+│   └── todo_app.html
 │
-└── README.md
+└── resources/                 # Learning aids
+    ├── cheat_sheets.html
+    └── useful_links.html
 ```
 
 ## Getting Started
@@ -46,38 +42,34 @@ learn-python/
    git clone https://github.com/jjaspreetsingh/learn-python.git
    ```
 
-2. Navigate to the project directory:
-   ```bash
-   cd learn-python
-   ```
+2. Open `index.html` in your web browser to start learning
 
-3. Run scripts using Python:
-   ```bash
-   python3 basics/variables.py
-   ```
+3. Navigate through the sections using the menu or direct links
+
+## Features
+
+- **Interactive Tutorials**: Step-by-step explanations with code examples
+- **Project-Based Learning**: Real-world Python applications
+- **Cheat Sheets**: Quick reference guides for common operations
+- **Curated Resources**: Links to courses, books, and communities
+- **GitHub Dark Theme**: Modern, eye-friendly design
+- **Responsive Design**: Works on desktop and mobile devices
+
+## Learning Path
+
+1. **Basics**: Start with variables, conditionals, and loops
+2. **Intermediate**: Learn functions, classes, and file handling
+3. **Projects**: Apply knowledge with calculator, data analysis, and todo app
+4. **Resources**: Explore additional learning materials and communities
 
 ## Requirements
 
-- Python 3.8 or higher
-- Basic command-line knowledge
-- A code editor such as VS Code or PyCharm
-
-(Optional) Create and activate a virtual environment:
-```bash
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-## Learning Goals
-
-- Understand Python syntax and data structures
-- Practice problem-solving with real examples
-- Learn file handling, error management, and modules
-- Explore Python libraries such as requests, pandas, and matplotlib
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- No installation required - works offline
 
 ## Contributing
 
-Feel free to fork this repository and suggest improvements, add exercises, or organize new sections. Contributions are welcome from all learners.
+Feel free to fork this repository and suggest improvements, add new tutorials, or fix issues. Contributions are welcome!
 
 ## License
 

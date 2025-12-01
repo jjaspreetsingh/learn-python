@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App Project - Learn Python</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>Todo App Project</h2>
+            <p>Create a command-line task management application. This project demonstrates classes, file handling, and user interface design.</p>
+
+            <h3>Project Features</h3>
+            <ul>
+                <li>Add new tasks</li>
+                <li>View all tasks</li>
+                <li>Mark tasks as completed</li>
+                <li>Delete tasks</li>
+                <li>Save/load tasks from file</li>
+                <li>Simple text-based menu</li>
+            </ul>
+
+            <h3>Class Design</h3>
+            <div class="example">
+                <h4>todo.py</h4>
+                <pre><code>import json
+import os
+
+class Task:
+    def __init__(self, description, completed=False):
+        self.description = description
+        self.completed = completed
+
+    def __str__(self):
+        status = "✓" if self.completed else "○"
+        return f"{status} {self.description}"
+
+class TodoList:
+    def __init__(self, filename="tasks.json"):
+        self.filename = filename
+        self.tasks = []
+        self.load_tasks()
+
+    def add_task(self, description):
+        self.tasks.append(Task(description))
+        self.save_tasks()
+
+    def complete_task(self, index):
+        if 0 <= index < len(self.tasks):
+            self.tasks[index].completed = True
+            self.save_tasks()
+            return True
+        return False
+
+    def delete_task(self, index):
+        if 0 <= index < len(self.tasks):
+            del self.tasks[index]
+            self.save_tasks()
+            return True
+        return False
+
+    def get_pending_tasks(self):
+        return [task for task in self.tasks if not task.completed]
+
+    def get_completed_tasks(self):
+        return [task for task in self.tasks if task.completed]
+
+    def save_tasks(self):
+        data = [{"description": task.description, "completed": task.completed}
+                for task in self.tasks]
+        with open(self.filename, 'w') as f:
+            json.dump(data, f)
+
+    def load_tasks(self):
+        if os.path.exists(self.filename):
+            with open(self.filename, 'r') as f:
+                data = json.load(f)
+                self.tasks = [Task(item['description'], item['completed'])
+                            for item in data]
+
+def main():
+    todo = TodoList()
+
+    while True:
+        print("\n=== Todo List ===")
+        print("1. View all tasks")
+        print("2. Add task")
+        print("3. Complete task")
+        print("4. Delete task")
+        print("5. Exit")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            if not todo.tasks:
+                print("No tasks yet!")
+            else:
+                for i, task in enumerate(todo.tasks):
+                    print(f"{i+1}. {task}")
+
+        elif choice == "2":
+            description = input("Enter task description: ")
+            todo.add_task(description)
+            print("Task added!")
+
+        elif choice == "3":
+            if not todo.get_pending_tasks():
+                print("No pending tasks!")
+            else:
+                for i, task in enumerate(todo.tasks):
+                    if not task.completed:
+                        print(f"{i+1}. {task}")
+                try:
+                    index = int(input("Enter task number to complete: ")) - 1
+                    if todo.complete_task(index):
+                        print("Task completed!")
+                    else:
+                        print("Invalid task number!")
+                except ValueError:
+                    print("Please enter a valid number!")
+
+        elif choice == "4":
+            if not todo.tasks:
+                print("No tasks to delete!")
+            else:
+                for i, task in enumerate(todo.tasks):
+                    print(f"{i+1}. {task}")
+                try:
+                    index = int(input("Enter task number to delete: ")) - 1
+                    if todo.delete_task(index):
+                        print("Task deleted!")
+                    else:
+                        print("Invalid task number!")
+                except ValueError:
+                    print("Please enter a valid number!")
+
+        elif choice == "5":
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid choice!")
+
+if __name__ == "__main__":
+    main()</code></pre>
+            </div>
+
+            <h3>Extensions</h3>
+            <ul>
+                <li>Add due dates and priorities</li>
+                <li>Create a GUI version with tkinter</li>
+                <li>Add categories/tags for tasks</li>
+                <li>Implement search functionality</li>
+                <li>Add task sorting and filtering</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

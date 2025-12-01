@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditionals - Learn Python</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>Conditionals</h2>
+            <p>Conditional statements allow your program to make decisions based on certain conditions. The most common conditional is the <code>if</code> statement.</p>
+
+            <h3>If Statement</h3>
+            <p>The basic syntax:</p>
+            <pre><code>if condition:
+    # code to execute if condition is True</code></pre>
+
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>age = 18
+
+if age >= 18:
+    print("You are an adult")</code></pre>
+            </div>
+
+            <h3>If-Else Statement</h3>
+            <p>Add an else clause to handle the opposite case:</p>
+            <pre><code>if condition:
+    # code if True
+else:
+    # code if False</code></pre>
+
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>temperature = 25
+
+if temperature > 30:
+    print("It's hot outside")
+else:
+    print("It's not too hot")</code></pre>
+            </div>
+
+            <h3>If-Elif-Else Statement</h3>
+            <p>Use elif for multiple conditions:</p>
+            <pre><code>if condition1:
+    # code
+elif condition2:
+    # code
+else:
+    # code</code></pre>
+
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>score = 85
+
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+elif score >= 70:
+    print("Grade: C")
+else:
+    print("Grade: F")</code></pre>
+            </div>
+
+            <h3>Comparison Operators</h3>
+            <ul>
+                <li><code>==</code> Equal to</li>
+                <li><code>!=</code> Not equal to</li>
+                <li><code>&gt;</code> Greater than</li>
+                <li><code>&lt;</code> Less than</li>
+                <li><code>&gt;=</code> Greater than or equal to</li>
+                <li><code>&lt;=</code> Less than or equal to</li>
+            </ul>
+
+            <h3>Logical Operators</h3>
+            <ul>
+                <li><code>and</code> Both conditions must be True</li>
+                <li><code>or</code> At least one condition must be True</li>
+                <li><code>not</code> Reverses the condition</li>
+            </ul>
+
+            <div class="example">
+                <h4>Example with logical operators:</h4>
+                <pre><code>age = 25
+has_license = True
+
+if age >= 18 and has_license:
+    print("You can drive")
+elif age >= 18 and not has_license:
+    print("You need a license to drive")
+else:
+    print("You are too young to drive")</code></pre>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

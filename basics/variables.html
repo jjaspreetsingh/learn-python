@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables & Data Types - Learn Python</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>Variables & Data Types</h2>
+            <p>Variables are containers for storing data values. In Python, you don't need to declare the type of a variable; Python automatically determines it based on the value assigned.</p>
+
+            <h3>Creating Variables</h3>
+            <p>Use the assignment operator (=) to create variables:</p>
+            <pre><code>name = "Alice"
+age = 25
+height = 5.7
+is_student = True</code></pre>
+
+            <h3>Data Types</h3>
+            <p>Python has several built-in data types:</p>
+            <ul>
+                <li><strong>Strings (str):</strong> Text data, enclosed in quotes</li>
+                <li><strong>Integers (int):</strong> Whole numbers</li>
+                <li><strong>Floats (float):</strong> Decimal numbers</li>
+                <li><strong>Booleans (bool):</strong> True or False values</li>
+            </ul>
+
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code># String
+message = "Hello, World!"
+
+# Integer
+year = 2023
+
+# Float
+pi = 3.14159
+
+# Boolean
+is_raining = False
+
+print(message)
+print(year)
+print(pi)
+print(is_raining)</code></pre>
+            </div>
+
+            <h3>Type Conversion</h3>
+            <p>You can convert between data types using built-in functions:</p>
+            <pre><code>num_str = "42"
+num_int = int(num_str)  # Converts string to integer
+
+price = 19.99
+price_int = int(price)  # Converts float to integer (truncates)
+
+count = 5
+count_str = str(count)  # Converts integer to string</code></pre>
+
+            <div class="explanation">
+                <strong>Tip:</strong> Use <code>type()</code> function to check a variable's data type: <code>print(type(variable_name))</code>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Project - Learn Python</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>Calculator Project</h2>
+            <p>Build a command-line calculator that performs basic arithmetic operations. This project demonstrates user input, functions, and error handling.</p>
+
+            <h3>Project Requirements</h3>
+            <ul>
+                <li>Accept two numbers from user input</li>
+                <li>Accept an operation (+, -, *, /)</li>
+                <li>Perform the calculation and display result</li>
+                <li>Handle division by zero</li>
+                <li>Allow multiple calculations in a loop</li>
+            </ul>
+
+            <h3>Sample Implementation</h3>
+            <div class="example">
+                <h4>calculator.py</h4>
+                <pre><code>def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        return "Error: Division by zero!"
+    return x / y
+
+def calculator():
+    print("Simple Calculator")
+    print("Operations: +, -, *, /")
+
+    while True:
+        try:
+            num1 = float(input("Enter first number: "))
+            operation = input("Enter operation: ")
+            num2 = float(input("Enter second number: "))
+
+            if operation == "+":
+                result = add(num1, num2)
+            elif operation == "-":
+                result = subtract(num1, num2)
+            elif operation == "*":
+                result = multiply(num1, num2)
+            elif operation == "/":
+                result = divide(num1, num2)
+            else:
+                print("Invalid operation!")
+                continue
+
+            print(f"Result: {result}")
+
+            again = input("Calculate again? (y/n): ")
+            if again.lower() != 'y':
+                break
+
+        except ValueError:
+            print("Invalid input! Please enter numbers.")
+
+calculator()</code></pre>
+            </div>
+
+            <h3>Extensions</h3>
+            <ul>
+                <li>Add more operations (exponentiation, square root)</li>
+                <li>Implement a graphical interface with tkinter</li>
+                <li>Add memory functions (store/recall previous results)</li>
+                <li>Support for complex expressions</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

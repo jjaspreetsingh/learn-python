@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheets - Learn Python</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>Python Cheat Sheets</h2>
+            <p>Quick reference guides for Python syntax and common operations.</p>
+
+            <h3>Basic Syntax</h3>
+            <div class="example">
+                <h4>Variables and Data Types</h4>
+                <pre><code># Variables
+name = "Alice"
+age = 25
+height = 5.7
+is_student = True
+
+# Data Types
+str_var = "Hello"      # String
+int_var = 42          # Integer
+float_var = 3.14      # Float
+bool_var = True       # Boolean
+
+# Type conversion
+int("42")     # String to int
+str(42)       # Int to string
+float("3.14") # String to float</code></pre>
+            </div>
+
+            <h3>Control Flow</h3>
+            <div class="example">
+                <h4>Conditionals</h4>
+                <pre><code>if condition:
+    # code
+elif another_condition:
+    # code
+else:
+    # code
+
+# Comparison operators: == != < > <= >=
+# Logical operators: and or not</code></pre>
+            </div>
+
+            <div class="example">
+                <h4>Loops</h4>
+                <pre><code># For loop
+for item in iterable:
+    # code
+
+# Range
+for i in range(5):     # 0,1,2,3,4
+for i in range(1,6):   # 1,2,3,4,5
+
+# While loop
+while condition:
+    # code
+
+# Loop control
+break    # Exit loop
+continue # Skip iteration</code></pre>
+            </div>
+
+            <h3>Functions</h3>
+            <div class="example">
+                <h4>Function Definition</h4>
+                <pre><code>def function_name(param1, param2=default):
+    # code
+    return value
+
+# Calling functions
+result = function_name(arg1, arg2)</code></pre>
+            </div>
+
+            <h3>Data Structures</h3>
+            <div class="example">
+                <h4>Lists</h4>
+                <pre><code># Create
+my_list = [1, 2, 3, "hello"]
+
+# Access
+my_list[0]      # First element
+my_list[-1]     # Last element
+
+# Modify
+my_list.append(4)     # Add to end
+my_list.insert(0, 0)  # Insert at index
+my_list.remove(2)     # Remove value
+del my_list[1]        # Remove by index
+
+# List comprehension
+squares = [x**2 for x in range(10)]</code></pre>
+            </div>
+
+            <div class="example">
+                <h4>Dictionaries</h4>
+                <pre><code># Create
+my_dict = {"key": "value", "name": "Alice"}
+
+# Access
+my_dict["key"]
+my_dict.get("key", "default")
+
+# Modify
+my_dict["new_key"] = "new_value"
+my_dict.update({"key": "updated"})
+
+# Methods
+my_dict.keys()    # Get keys
+my_dict.values()  # Get values
+my_dict.items()   # Get key-value pairs</code></pre>
+            </div>
+
+            <h3>File Handling</h3>
+            <div class="example">
+                <h4>Reading/Writing Files</h4>
+                <pre><code># Read file
+with open("file.txt", "r") as f:
+    content = f.read()
+    lines = f.readlines()
+
+# Write file
+with open("file.txt", "w") as f:
+    f.write("Hello, World!")
+
+# Append
+with open("file.txt", "a") as f:
+    f.write("More text")</code></pre>
+            </div>
+
+            <h3>Common String Methods</h3>
+            <div class="example">
+                <h4>String Operations</h4>
+                <pre><code>text = "Hello, World!"
+
+# Case conversion
+text.upper()     # "HELLO, WORLD!"
+text.lower()     # "hello, world!"
+text.title()     # "Hello, World!"
+
+# Searching
+text.find("World")    # 7
+"World" in text       # True
+
+# Splitting/Joining
+words = text.split()  # ["Hello,", "World!"]
+" ".join(words)       # "Hello, World!"
+
+# Formatting
+f"My name is {name}"  # f-string
+"My age is {}".format(age)</code></pre>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes & Objects - Learn Python</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="page-nav">
+        <a href="../index.html">← Back to Home</a>
+    </div>
+
+    <main>
+        <section>
+            <h2>Classes & Objects</h2>
+            <p>Classes are blueprints for creating objects. Objects are instances of classes that bundle data (attributes) and functions (methods) together.</p>
+
+            <h3>Defining a Class</h3>
+            <p>Use the <code>class</code> keyword to define a class:</p>
+            <pre><code>class ClassName:
+    # class attributes and methods</code></pre>
+
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+
+    def bark(self):
+        return f"{self.name} says woof!"
+
+# Creating an object
+my_dog = Dog("Buddy", "Golden Retriever")
+print(my_dog.name)  # Output: Buddy
+print(my_dog.bark())  # Output: Buddy says woof!</code></pre>
+            </div>
+
+            <h3>The __init__ Method</h3>
+            <p>The <code>__init__</code> method is a special method called when an object is created. It's used to initialize attributes.</p>
+
+            <h3>Self Parameter</h3>
+            <p><code>self</code> refers to the current instance of the class. It's the first parameter in instance methods.</p>
+
+            <h3>Instance Methods</h3>
+            <p>Methods that operate on instance data:</p>
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+rect = Rectangle(5, 3)
+print(rect.area())  # Output: 15
+print(rect.perimeter())  # Output: 16</code></pre>
+            </div>
+
+            <h3>Class Attributes vs Instance Attributes</h3>
+            <ul>
+                <li><strong>Class attributes:</strong> Shared by all instances</li>
+                <li><strong>Instance attributes:</strong> Unique to each instance</li>
+            </ul>
+
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>class Car:
+    wheels = 4  # Class attribute
+
+    def __init__(self, color):
+        self.color = color  # Instance attribute
+
+car1 = Car("red")
+car2 = Car("blue")
+
+print(car1.wheels)  # Output: 4
+print(car2.wheels)  # Output: 4
+print(car1.color)   # Output: red
+print(car2.color)   # Output: blue</code></pre>
+            </div>
+
+            <h3>Inheritance</h3>
+            <p>Classes can inherit attributes and methods from other classes:</p>
+            <div class="example">
+                <h4>Example:</h4>
+                <pre><code>class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} says woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return f"{self.name} says meow!"
+
+dog = Dog("Buddy")
+cat = Cat("Whiskers")
+
+print(dog.speak())  # Output: Buddy says woof!
+print(cat.speak())  # Output: Whiskers says meow!</code></pre>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

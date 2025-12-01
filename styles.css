@@ -1,20 +1,20 @@
-/* Learn Python Website Styles */
+/* Learn Python Website Styles - GitHub Dark Theme */
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f8f9fa;
+    color: #c9d1d9;
+    background-color: #0d1117;
 }
 
 header {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
-    color: white;
+    background: #161b22;
+    color: #f0f6fc;
     padding: 2rem 1rem;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 header h1 {
@@ -27,7 +27,7 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: #f0f6fc;
     text-decoration: none;
     margin: 0 1rem;
     padding: 0.5rem 1rem;
@@ -36,7 +36,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(177, 186, 196, 0.2);
 }
 
 main {
@@ -46,22 +46,22 @@ main {
 }
 
 section {
-    background: white;
+    background: #161b22;
     margin-bottom: 2rem;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 h2 {
-    color: #2c3e50;
-    border-bottom: 3px solid #4CAF50;
+    color: #f0f6fc;
+    border-bottom: 3px solid #58a6ff;
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
 }
 
 h3 {
-    color: #34495e;
+    color: #c9d1d9;
     margin-top: 2rem;
 }
 
@@ -74,7 +74,7 @@ li {
 }
 
 a {
-    color: #4CAF50;
+    color: #58a6ff;
     text-decoration: none;
 }
 
@@ -83,7 +83,8 @@ a:hover {
 }
 
 code {
-    background-color: #f4f4f4;
+    background-color: #0d1117;
+    color: #c9d1d9;
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
     font-family: 'Courier New', monospace;
@@ -91,8 +92,8 @@ code {
 }
 
 pre {
-    background-color: #2d3748;
-    color: #e2e8f0;
+    background-color: #0d1117;
+    color: #c9d1d9;
     padding: 1rem;
     border-radius: 5px;
     overflow-x: auto;
@@ -108,16 +109,16 @@ pre code {
 }
 
 .explanation {
-    background-color: #e8f5e8;
-    border-left: 4px solid #4CAF50;
+    background-color: #0f5132;
+    border-left: 4px solid #58a6ff;
     padding: 1rem;
     margin: 1rem 0;
     border-radius: 0 5px 5px 0;
 }
 
 .example {
-    background-color: #fff3cd;
-    border-left: 4px solid #ffc107;
+    background-color: #332701;
+    border-left: 4px solid #d29922;
     padding: 1rem;
     margin: 1rem 0;
     border-radius: 0 5px 5px 0;
@@ -126,8 +127,8 @@ pre code {
 footer {
     text-align: center;
     padding: 2rem;
-    background-color: #2c3e50;
-    color: white;
+    background-color: #161b22;
+    color: #c9d1d9;
     margin-top: 2rem;
 }
 
