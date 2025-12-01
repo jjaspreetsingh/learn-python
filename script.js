@@ -49,14 +49,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Search functionality (simple)
-function searchLessons(query) {
-    const allLessons = document.querySelectorAll('.lesson-link');
-    allLessons.forEach(lesson => {
-        const text = lesson.textContent.toLowerCase();
-        lesson.style.display = text.includes(query.toLowerCase()) ? 'block' : 'none';
-    });
-}
+
 
 // Add copy buttons to code blocks
 document.addEventListener('DOMContentLoaded', () => {
@@ -74,17 +67,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Search functionality
-document.getElementById('search-input').addEventListener('input', (e) => {
-    const query = e.target.value;
-    searchLessons(query);
-});
-
-function searchLessons(query) {
-    const allLessons = document.querySelectorAll('.sidebar-nav a');
-    allLessons.forEach(lesson => {
-        const text = lesson.textContent.toLowerCase();
-        lesson.style.display = text.includes(query.toLowerCase()) ? 'block' : 'none';
-    });
-}</content>
+</content>
 <parameter name="filePath">script.js
