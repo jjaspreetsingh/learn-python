@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn Python - Interactive Tutorial</title>
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -15,8 +17,76 @@
             <a href="#projects">Projects</a>
             <a href="#advanced">Advanced</a>
             <a href="#resources">Resources</a>
+            <a href="#community">Community</a>
         </nav>
+        <div class="header-controls">
+            <input type="text" id="search-input" placeholder="Search lessons...">
+            <button id="theme-toggle">🌙</button>
+        </div>
     </header>
+
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h2>Learning Modules</h2>
+            <div class="progress-tracker">
+                <span>Overall Progress: <span id="overall-progress">0%</span></span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="module">
+                <h3>Basics <span class="module-progress" id="basics-progress">0/3</span></h3>
+                <ul>
+                    <li><a href="basics/variables.html" class="lesson-link" data-lesson="variables">Variables & Data Types</a></li>
+                    <li><a href="basics/conditionals.html" class="lesson-link" data-lesson="conditionals">Conditionals</a></li>
+                    <li><a href="basics/loops.html" class="lesson-link" data-lesson="loops">Loops</a></li>
+                </ul>
+            </div>
+            <div class="module">
+                <h3>Intermediate <span class="module-progress" id="intermediate-progress">0/3</span></h3>
+                <ul>
+                    <li><a href="intermediate/functions.html" class="lesson-link" data-lesson="functions">Functions</a></li>
+                    <li><a href="intermediate/classes.html" class="lesson-link" data-lesson="classes">Classes & Objects</a></li>
+                    <li><a href="intermediate/file_handling.html" class="lesson-link" data-lesson="file_handling">File Handling</a></li>
+                </ul>
+            </div>
+            <div class="module">
+                <h3>Projects <span class="module-progress" id="projects-progress">0/5</span></h3>
+                <ul>
+                    <li><a href="projects/calculator.html" class="lesson-link" data-lesson="calculator">Calculator</a></li>
+                    <li><a href="projects/todo_app.html" class="lesson-link" data-lesson="todo_app">Todo App</a></li>
+                    <li><a href="projects/data_analysis.html" class="lesson-link" data-lesson="data_analysis">Data Analysis</a></li>
+                    <li><a href="projects/advanced/rest_api.html" class="lesson-link" data-lesson="rest_api">REST API</a></li>
+                    <li><a href="projects/advanced/web_scraper.html" class="lesson-link" data-lesson="web_scraper">Web Scraper</a></li>
+                </ul>
+            </div>
+            <div class="module">
+                <h3>Advanced <span class="module-progress" id="advanced-progress">0/10</span></h3>
+                <ul>
+                    <li>Async/Await</li>
+                    <li>Networking</li>
+                    <li>Web Apps</li>
+                    <li>Data Pipelines</li>
+                    <li>Testing</li>
+                    <li>Deployment</li>
+                    <li>Databases</li>
+                    <li>Security</li>
+                    <li>Performance</li>
+                    <li>Open Source</li>
+                </ul>
+            </div>
+            <div class="module">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#forum">Forum</a></li>
+                    <li><a href="#qa">Q&A</a></li>
+                    <li><a href="#showcase">Project Showcase</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
 
     <main>
         <section id="hero">
@@ -40,6 +110,9 @@
         <section id="basics">
             <h2>Build a Strong Foundation</h2>
             <p>In this section, you'll learn Python's core syntax and basic concepts, enabling you to write simple programs and understand how code works. By the end, you'll confidently create scripts for everyday tasks and feel ready to tackle more complex problems.</p>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/rfscVS0vtbw" title="Python Basics Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
             <ul>
                 <li><a href="basics/variables.html">Variables & Data Types</a> - Store and manipulate different types of information, such as numbers and text, to build dynamic programs.</li>
                 <li><a href="basics/conditionals.html">Conditionals</a> - Make decisions in your code with if/else statements, allowing programs to respond to different situations.</li>
@@ -103,6 +176,20 @@
                 <li><a href="resources/cheat_sheets.html">Cheat Sheets</a> - Quick reference guides for Python syntax and common operations.</li>
                 <li><a href="resources/useful_links.html">Useful Links</a> - Tutorials, courses, and communities for beginners and advanced learners, including specialized resources for frameworks, testing, and deployment.</li>
             </ul>
+        </section>
+
+        <section id="community">
+            <h2>Join the Community</h2>
+            <p>Connect with fellow learners, get help, and share your projects.</p>
+            <div class="community-links">
+                <a href="https://discord.gg/python" class="cta-primary">Join Discord</a>
+                <a href="https://stackoverflow.com/questions/tagged/python" class="cta-secondary">Stack Overflow</a>
+                <a href="#showcase" class="cta-secondary">Project Showcase</a>
+            </div>
+            <div id="forum-placeholder">
+                <h3>Forum (Coming Soon)</h3>
+                <p>Discuss lessons, ask questions, and collaborate.</p>
+            </div>
         </section>
 
         <section id="trust">
