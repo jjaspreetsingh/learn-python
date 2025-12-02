@@ -1,6 +1,11 @@
 // Calculator functionality
 document.addEventListener('DOMContentLoaded', () => {
     const display = document.getElementById('calc-display');
+
+    if (!display) {
+        console.error('Calculator display not found');
+        return;
+    }
     let currentInput = '';
     let operator = '';
     let previousInput = '';

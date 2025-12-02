@@ -9,6 +9,7 @@
 <body>
 <header>
     <h1>Learn Python</h1>
+    <button id="theme-toggle" aria-label="Toggle theme">Toggle Theme</button>
     <nav>
         <a href="../index.html#basics">Basics</a>
         <a href="../index.html#intermediate">Intermediate</a>
@@ -71,11 +72,31 @@ price_int = int(price)  # Converts float to integer (truncates)
 count = 5
 count_str = str(count)  # Converts integer to string</code></pre>
 
-            <div class="explanation">
-                <strong>Tip:</strong> Use <code>type()</code> function to check a variable's data type: <code>print(type(variable_name))</code>
-            </div>
-        </section>
-    </main>
+             <div class="explanation">
+                 <strong>Tip:</strong> Use <code>type()</code> function to check a variable's data type: <code>print(type(variable_name))</code>
+             </div>
+         </section>
+
+         <section id="quiz">
+             <h2>Variables Quiz</h2>
+             <div id="quiz-container">
+                 <div class="question">
+                     <p>What is the correct way to create a variable in Python?</p>
+                     <input type="radio" name="q1" value="var x = 5"> var x = 5<br>
+                     <input type="radio" name="q1" value="x = 5"> x = 5<br>
+                     <input type="radio" name="q1" value="int x = 5"> int x = 5<br>
+                 </div>
+                 <div class="question">
+                     <p>Which of these is a valid data type in Python?</p>
+                     <input type="radio" name="q2" value="string"> string<br>
+                     <input type="radio" name="q2" value="str"> str<br>
+                     <input type="radio" name="q2" value="text"> text<br>
+                 </div>
+                 <button id="submit-quiz">Submit Quiz</button>
+                 <p id="quiz-result"></p>
+             </div>
+         </section>
+     </main>
 
     <footer>
         <div class="footer-content">
@@ -85,5 +106,15 @@ count_str = str(count)  # Converts integer to string</code></pre>
         <p>Happy coding! 🚀</p>
 <p>&copy; 2025 All rights reserved.</p>
     </footer>
+    <script>
+        document.getElementById('submit-quiz').addEventListener('click', () => {
+            const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+            const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+            let score = 0;
+            if (q1 === 'x = 5') score++;
+            if (q2 === 'str') score++;
+            document.getElementById('quiz-result').textContent = `You scored ${score}/2`;
+        });
+    </script>
 </body>
 </html>

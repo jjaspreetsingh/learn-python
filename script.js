@@ -1,5 +1,16 @@
-// Dark mode is always enabled
-document.body.classList.add('dark-mode');
+// Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.body.classList.add(savedTheme === 'light' ? 'light-mode' : 'dark-mode');
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const isLight = document.body.classList.contains('light-mode');
+        document.body.classList.remove(isLight ? 'light-mode' : 'dark-mode');
+        document.body.classList.add(isLight ? 'dark-mode' : 'light-mode');
+        localStorage.setItem('theme', isLight ? 'dark' : 'light');
+    });
+}
 
 // Register service worker
 if ('serviceWorker' in navigator) {
@@ -9,24 +20,27 @@ if ('serviceWorker' in navigator) {
 }
 
 // Progress tracking
-const progressKey = 'python-learning-progress';
+const progressFill = document.getElementById('progress-fill');
+const progressText = document.getElementById('progress-text');
+const totalSections = document.querySelectorAll('.sidebar-nav a').length;
+let completedSections = parseInt(localStorage.getItem('completedSections') || '0');
 
 function updateProgress() {
-    const progress = JSON.parse(localStorage.getItem(progressKey) || '{}');
-    const currentPage = window.location.pathname;
-    progress[currentPage] = true;
-    localStorage.setItem(progressKey, JSON.stringify(progress));
-
-    const totalPages = 15;
-    const completedPages = Object.keys(progress).length;
-    const percentage = Math.round((completedPages / totalPages) * 100);
-
-    const progressFill = document.querySelector('.progress-fill');
-    const progressText = document.querySelector('.progress-text');
-
+    const percentage = (completedSections / totalSections) * 100;
     if (progressFill) progressFill.style.width = percentage + '%';
-    if (progressText) progressText.textContent = `${percentage}% Complete (${completedPages}/${totalPages})`;
+    if (progressText) progressText.textContent = Math.round(percentage) + '% Complete';
 }
+
+document.querySelectorAll('.sidebar-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (!link.classList.contains('completed')) {
+            link.classList.add('completed');
+            completedSections++;
+            localStorage.setItem('completedSections', completedSections);
+            updateProgress();
+        }
+    });
+});
 
 // Search functionality
 function initSearch() {

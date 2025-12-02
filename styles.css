@@ -7,10 +7,9 @@ body {
     padding: 20px;
     color: #00ff00;
     background-color: #000000;
-    border: 2px solid #00ff00;
-    border-radius: 10px;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 0 auto;
+    text-align: center;
 }
 
 header {
@@ -386,6 +385,44 @@ main {
 
 .dark-mode footer {
     background: #161b22;
+}
+
+/* Light mode styles */
+.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.light-mode header {
+    background: #f8f9fa;
+    color: #000000;
+}
+
+.light-mode section {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+}
+
+.light-mode footer {
+    background: #f8f9fa;
+    color: #000000;
+}
+
+.light-mode a {
+    color: #007bff;
+}
+
+.light-mode code {
+    background-color: #f8f9fa;
+    color: #000000;
+    border-color: #000000;
+}
+
+.light-mode pre {
+    background-color: #f8f9fa;
+    color: #000000;
+    border-color: #000000;
 }
 
 /* Community links */

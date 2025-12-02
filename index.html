@@ -38,6 +38,7 @@
         <h1>Learn Python</h1>
         <div class="header-controls">
             <input type="search" id="search-input" placeholder="Search lessons..." aria-label="Search lessons">
+            <button id="theme-toggle" aria-label="Toggle theme">Toggle Theme</button>
         </div>
         <nav role="navigation" aria-label="Main navigation">
             <a href="#basics">Basics</a>
@@ -47,12 +48,42 @@
         </nav>
     </header>
 
-    <aside class="progress-tracker" role="complementary" aria-label="Learning progress">
-        <h3>Your Progress</h3>
-        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-fill"></div>
+    <aside id="sidebar" role="complementary" aria-label="Learning progress">
+        <div class="sidebar-header">
+            <h2>Progress</h2>
         </div>
-        <p class="progress-text">0% Complete (0/15)</p>
+        <div class="progress-tracker">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+            </div>
+            <p id="progress-text">0% Complete</p>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="module">
+                <h3>Basics</h3>
+                <ul>
+                    <li><a href="basics/variables.html" data-section="variables">Variables & Data Types</a></li>
+                    <li><a href="basics/conditionals.html" data-section="conditionals">Conditionals</a></li>
+                    <li><a href="basics/loops.html" data-section="loops">Loops</a></li>
+                </ul>
+            </div>
+            <div class="module">
+                <h3>Intermediate</h3>
+                <ul>
+                    <li><a href="intermediate/functions.html" data-section="functions">Functions</a></li>
+                    <li><a href="intermediate/classes.html" data-section="classes">Classes & Objects</a></li>
+                    <li><a href="intermediate/file_handling.html" data-section="file_handling">File Handling</a></li>
+                </ul>
+            </div>
+            <div class="module">
+                <h3>Projects</h3>
+                <ul>
+                    <li><a href="projects/calculator.html" data-section="calculator">Calculator</a></li>
+                    <li><a href="projects/todo_app.html" data-section="todo">Todo App</a></li>
+                    <li><a href="projects/data_analysis.html" data-section="data_analysis">Data Analysis</a></li>
+                </ul>
+            </div>
+        </nav>
     </aside>
 
     <main>

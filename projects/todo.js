@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const addTaskBtn = document.getElementById('add-task-btn');
     const taskList = document.getElementById('task-list');
 
+    if (!taskInput || !addTaskBtn || !taskList) {
+        console.error('Todo app elements not found');
+        return;
+    }
+
     // Load tasks from localStorage
     loadTasks();
 
