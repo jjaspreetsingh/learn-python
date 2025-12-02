@@ -19,12 +19,35 @@ header {
     padding: 2rem 1rem;
     text-align: center;
     border-bottom: 1px solid #00ff00;
+    position: relative;
 }
 
 header h1 {
     margin: 0;
     font-size: 2.5rem;
     text-shadow: 0 0 10px #00ff00;
+}
+
+.header-controls {
+    position: relative;
+    max-width: 300px;
+    margin: 1rem auto;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    background: #000000;
+    color: #00ff00;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+#search-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
 nav {
@@ -44,6 +67,27 @@ nav a {
 nav a:hover {
     background-color: #00ff00;
     color: #000000;
+}
+
+.progress-tracker {
+    background: #000000;
+    border: 1px solid #00ff00;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.progress-tracker h3 {
+    margin-top: 0;
+    color: #00ff00;
+}
+
+.progress-text {
+    text-align: center;
+    color: #00ff00;
+    margin-top: 0.5rem;
+    font-weight: bold;
 }
 
 main {
@@ -356,16 +400,74 @@ main {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    background: #58a6ff;
-    color: #0d1117;
-    border: none;
+    background: #00ff00;
+    color: #000000;
+    border: 1px solid #00ff00;
     padding: 0.3rem 0.6rem;
     border-radius: 3px;
     cursor: pointer;
     font-size: 0.8rem;
+    font-family: 'Fira Code', monospace;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #ffffff;
+    color: #000000;
 }
 
 pre {
+    position: relative;
+}
+
+pre::before {
+    content: attr(data-language);
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: #000000;
+    color: #00ff00;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    border: 1px solid #00ff00;
+}
+
+/* Search dropdown */
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #000000;
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.search-dropdown a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #00ff00;
+    text-decoration: none;
+    border-bottom: 1px solid #00ff00;
+}
+
+.search-dropdown a:hover {
+    background: #00ff00;
+    color: #000000;
+}
+
+.search-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.header-controls {
     position: relative;
 }
 
@@ -571,35 +673,107 @@ pre {
     font-weight: bold;
 }
 
+/* Smooth transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover animations */
+section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
+}
+
+.calc-btn:active,
+#add-task-btn:active,
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
 /* Responsive design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    body {
+        padding: 10px;
+        margin: 10px;
+    }
+
     #sidebar {
-        width: 250px;
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+        border-radius: 8px;
     }
 
     main {
-        margin-left: 270px;
-        max-width: calc(100% - 280px);
+        margin-left: 0;
+        max-width: 100%;
     }
 
     header h1 {
         font-size: 2rem;
     }
 
-    nav a {
-        display: block;
-        margin: 0.5rem 0;
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
     }
 
-    main {
-        padding: 1rem;
+    nav a {
+        margin: 0;
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .calc-buttons {
+        gap: 0.3rem;
+    }
+
+    .calc-btn {
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .data-container {
+        flex-direction: column;
+    }
+
+    .cta-primary, .cta-secondary {
+        display: block;
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
     }
 
     section {
         padding: 1rem;
     }
 
+    pre {
+        font-size: 0.8em;
+    }
+
+    .calculator-container,
+    .todo-container {
+        max-width: 100%;
+    }
+
     .community-links {
         flex-direction: column;
+    }
+
+    #grades-table {
+        font-size: 0.85rem;
+    }
+
+    #grades-table th, #grades-table td {
+        padding: 0.3rem;
     }
 }

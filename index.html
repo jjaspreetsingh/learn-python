@@ -36,9 +36,24 @@
 <body>
     <header>
         <h1>Learn Python</h1>
+        <div class="header-controls">
+            <input type="search" id="search-input" placeholder="Search lessons..." aria-label="Search lessons">
+        </div>
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="#basics">Basics</a>
+            <a href="#intermediate">Intermediate</a>
+            <a href="#projects">Projects</a>
+            <a href="#resources">Resources</a>
+        </nav>
     </header>
 
-
+    <aside class="progress-tracker" role="complementary" aria-label="Learning progress">
+        <h3>Your Progress</h3>
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-fill"></div>
+        </div>
+        <p class="progress-text">0% Complete (0/15)</p>
+    </aside>
 
     <main>
         <section id="hero">

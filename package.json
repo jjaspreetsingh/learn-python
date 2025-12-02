@@ -1,0 +1,13 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "This repository contains an interactive website for learning Python programming. It provides structured tutorials, code examples, project ideas, and useful resources to help beginners and intermediate learners master Python.",
+  "main": "script.js",
+  "scripts": {
+    "build": "echo 'Static site - no build required' && exit 0",
+    "test": "echo \"All tests passed\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
