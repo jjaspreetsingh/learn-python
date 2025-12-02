@@ -27,27 +27,7 @@ header h1 {
     text-shadow: 0 0 10px #00ff00;
 }
 
-.header-controls {
-    position: relative;
-    max-width: 300px;
-    margin: 1rem auto;
-}
 
-#search-input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #00ff00;
-    border-radius: 5px;
-    background: #000000;
-    color: #00ff00;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-}
-
-#search-input:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-}
 
 nav {
     margin-top: 1rem;
@@ -387,43 +367,7 @@ main {
     background: #161b22;
 }
 
-/* Light mode styles */
-.light-mode {
-    background-color: #ffffff;
-    color: #000000;
-}
 
-.light-mode header {
-    background: #f8f9fa;
-    color: #000000;
-}
-
-.light-mode section {
-    background: #ffffff;
-    color: #000000;
-    border-color: #000000;
-}
-
-.light-mode footer {
-    background: #f8f9fa;
-    color: #000000;
-}
-
-.light-mode a {
-    color: #007bff;
-}
-
-.light-mode code {
-    background-color: #f8f9fa;
-    color: #000000;
-    border-color: #000000;
-}
-
-.light-mode pre {
-    background-color: #f8f9fa;
-    color: #000000;
-    border-color: #000000;
-}
 
 /* Community links */
 .community-links {
