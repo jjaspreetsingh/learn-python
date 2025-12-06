@@ -1,155 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-time Chat App Project - Learn Python</title>
+    <title>Project: Chat App | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <script src="../../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../../index.html#basics">Basics</a>
-        <a href="../../index.html#intermediate">Intermediate</a>
-        <a href="../../index.html#projects">Projects</a>
-        <a href="../../index.html#advanced">Advanced</a>
-        <a href="../../index.html#resources">Resources</a>
-        <a href="../../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Real-time Chat App (WebSockets)</h2>
-            <p>Develop a live messaging application using WebSockets. This project demonstrates real-time communication, concurrent connections, and event-driven programming.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../../index.html#basics">Basics</a>
+                    <a href="../../index.html#intermediate">Intermediate</a>
+                    <a href="../../index.html#projects">Projects</a>
+                    <a href="../../index.html#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>Project Requirements</h3>
-            <ul>
-                <li>Set up a WebSocket server with websockets library</li>
-                <li>Handle multiple client connections concurrently</li>
-                <li>Broadcast messages to all connected clients</li>
-                <li>Implement basic chat commands (/nick, /quit)</li>
-                <li>Create a simple web client interface</li>
-            </ul>
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Projects</h3>
+            <a href="../calculator.html">Calculator</a>
+            <a href="../todo_app.html">Todo App</a>
+            <a href="../data_analysis.html">Data Analysis</a>
 
-            <h3>Sample Implementation</h3>
-            <div class="example">
-                <h4>chat_server.py</h4>
-                <pre><code>import asyncio
+            <h3>Advanced Projects</h3>
+            <a href="web_scraper.html">Web Scraper</a>
+            <a href="rest_api.html">REST API</a>
+            <a href="chat_app.html" class="active">Chat App</a>
+            <a href="data_pipeline.html">Data Pipeline</a>
+            <a href="deployment_script.html">Deployment Script</a>
+        </aside>
+
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../../index.html">Home</a> <span>/</span> Advanced <span>/</span> Chat App
+            </div>
+
+            <h1>Project: Real-time Chat</h1>
+            <p>Modern apps are real-time. We'll use <strong>WebSockets</strong> to create a chat room where messages
+                appear instantly.</p>
+
+            <h2>1. The Server (Python)</h2>
+            <p>We use the <code>websockets</code> library to handle connections.</p>
+
+            <pre><code class="language-python">import asyncio
 import websockets
-import json
 
-connected_clients = set()
+connected = set()
 
-async def chat_handler(websocket, path):
-    # Add client to connected set
-    connected_clients.add(websocket)
-    
+async def chat(websocket, path):
+    connected.add(websocket)
     try:
-        # Send welcome message
-        await websocket.send(json.dumps({
-            'type': 'system',
-            'message': 'Welcome to the chat! Type /quit to exit.'
-        }))
-        
         async for message in websocket:
-            data = json.loads(message)
-            
-            if data['type'] == 'chat':
-                # Broadcast message to all clients
-                broadcast_message = json.dumps({
-                    'type': 'chat',
-                    'username': data.get('username', 'Anonymous'),
-                    'message': data['message']
-                })
-                
-                # Send to all connected clients except sender
-                for client in connected_clients:
-                    if client != websocket:
-                        try:
-                            await client.send(broadcast_message)
-                        except:
-                            pass
-            
-            elif data['type'] == 'command':
-                if data['command'] == '/quit':
-                    break
-    
-    except websockets.exceptions.ConnectionClosed:
-        pass
+            # Broadcast to all others
+            for conn in connected:
+                if conn != websocket:
+                    await conn.send(f"User says: {message}")
     finally:
-        # Remove client from connected set
-        connected_clients.remove(websocket)
+        connected.remove(websocket)
 
-async def main():
-    server = await websockets.serve(chat_handler, "localhost", 8765)
-    print("Chat server started on ws://localhost:8765")
-    await server.wait_closed()
+start_server = websockets.serve(chat, "localhost", 8765)
 
-if __name__ == "__main__":
-    asyncio.run(main())</code></pre>
+asyncio.get_event_loop().run_until_complete(start_server)
+asyncio.get_event_loop().run_forever()</code></pre>
+
+            <h2>2. The Client (HTML/JS)</h2>
+            <p>Browsers have built-in WebSocket support.</p>
+
+            <pre><code class="language-javascript">const ws = new WebSocket("ws://localhost:8765");
+
+ws.onmessage = function(event) {
+    console.log("New Message:", event.data);
+};
+
+function sendMessage() {
+    ws.send("Hello World!");
+}</code></pre>
+
+            <div class="page-nav-links">
+                <a href="rest_api.html" class="page-nav-link">
+                    <small>Previous Challenge</small>
+                    <span>REST API</span>
+                </a>
+                <a href="../../index.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Mastery Achieved</small>
+                    <span>Return Home →</span>
+                </a>
             </div>
 
-            <h3>Web Client (chat_client.html)</h3>
-            <div class="example">
-                <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Chat Client&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id="messages"&gt;&lt;/div&gt;
-    &lt;input type="text" id="username" placeholder="Username"&gt;
-    &lt;input type="text" id="message" placeholder="Message"&gt;
-    &lt;button onclick="sendMessage()"&gt;Send&lt;/button&gt;
-
-    &lt;script&gt;
-        const ws = new WebSocket('ws://localhost:8765');
-        const messages = document.getElementById('messages');
-        
-        ws.onmessage = function(event) {
-            const data = JSON.parse(event.data);
-            const messageDiv = document.createElement('div');
-            messageDiv.textContent = `${data.username || 'System'}: ${data.message}`;
-            messages.appendChild(messageDiv);
-        };
-        
-        function sendMessage() {
-            const username = document.getElementById('username').value;
-            const message = document.getElementById('message').value;
-            
-            ws.send(JSON.stringify({
-                type: 'chat',
-                username: username,
-                message: message
-            }));
-            
-            document.getElementById('message').value = '';
-        }
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-            </div>
-
-            <h3>Extensions</h3>
-            <ul>
-                <li>Add user authentication and private messaging</li>
-                <li>Implement message history and persistence</li>
-                <li>Add file sharing capabilities</li>
-                <li>Create multiple chat rooms</li>
-                <li>Deploy to a cloud platform with load balancing</li>
-            </ul>
-        </section>
-    </main>
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../../index.html">Home</a> | <a href="../../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

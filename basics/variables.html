@@ -1,119 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Variables & Data Types - Learn Python</title>
+    <title>Variables & Data Types | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../index.html#basics">Basics</a>
-        <a href="../index.html#intermediate">Intermediate</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#advanced">Advanced</a>
-        <a href="../index.html#resources">Resources</a>
-        <a href="../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Variables & Data Types</h2>
-            <p>Variables are containers for storing data values. In Python, you don't need to declare the type of a variable; Python automatically determines it based on the value assigned.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../index.html#basics">Basics</a>
+                    <a href="../index.html#intermediate">Intermediate</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>Creating Variables</h3>
-            <p>Use the assignment operator (=) to create variables:</p>
-            <pre><code>name = "Alice"
-age = 25
-height = 5.7
-is_student = True</code></pre>
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Basics</h3>
+            <a href="variables.html" class="active">Variables & Types</a>
+            <a href="conditionals.html">Logic & If/Else</a>
+            <a href="loops.html">Loops</a>
 
-            <h3>Data Types</h3>
-            <p>Python has several built-in data types:</p>
-            <ul>
-                <li><strong>Strings (str):</strong> Text data, enclosed in quotes</li>
-                <li><strong>Integers (int):</strong> Whole numbers</li>
-                <li><strong>Floats (float):</strong> Decimal numbers</li>
-                <li><strong>Booleans (bool):</strong> True or False values</li>
-            </ul>
+            <h3>Intermediate</h3>
+            <a href="../intermediate/functions.html">Functions</a>
+            <a href="../intermediate/classes.html">Classes (OOP)</a>
+            <a href="../intermediate/file_handling.html">File Handling</a>
+            <a href="../intermediate/modules.html">Modules & Pip</a>
 
-            <div class="example">
-                <h4>Example:</h4>
-                <pre><code># String
-message = "Hello, World!"
+            <h3>Projects</h3>
+            <a href="../projects/calculator.html">Calculator</a>
+            <a href="../projects/todo_app.html">Todo App</a>
+            <a href="../projects/data_analysis.html">Data Analysis</a>
+        </aside>
 
-# Integer
-year = 2023
-
-# Float
-pi = 3.14159
-
-# Boolean
-is_raining = False
-
-print(message)
-print(year)
-print(pi)
-print(is_raining)</code></pre>
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> <span>/</span> Basics <span>/</span> Variables
             </div>
 
-            <h3>Type Conversion</h3>
-            <p>You can convert between data types using built-in functions:</p>
-            <pre><code>num_str = "42"
-num_int = int(num_str)  # Converts string to integer
+            <h1>Variables & Data Types</h1>
+            <p>Welcome to Python! The first thing you need to know is how to store information. Think of a
+                <strong>Variable</strong> as a labeled box where you can put data to use later.
+            </p>
 
-price = 19.99
-price_int = int(price)  # Converts float to integer (truncates)
+            <h2>1. Creating a Variable</h2>
+            <p>In Python, you don't need to do anything special to create a variable. You just give it a name and assign
+                a value using the equals sign <code>=</code>.</p>
 
-count = 5
-count_str = str(count)  # Converts integer to string</code></pre>
+            <pre><code class="language-python"># This puts the text "Alice" into a box labeled 'name'
+name = "Alice"
 
-             <div class="explanation">
-                 <strong>Tip:</strong> Use <code>type()</code> function to check a variable's data type: <code>print(type(variable_name))</code>
-             </div>
-         </section>
+# This puts the number 25 into a box labeled 'age'
+age = 25
 
-         <section id="quiz">
-             <h2>Variables Quiz</h2>
-             <div id="quiz-container">
-                 <div class="question">
-                     <p>What is the correct way to create a variable in Python?</p>
-                     <input type="radio" name="q1" value="var x = 5"> var x = 5<br>
-                     <input type="radio" name="q1" value="x = 5"> x = 5<br>
-                     <input type="radio" name="q1" value="int x = 5"> int x = 5<br>
-                 </div>
-                 <div class="question">
-                     <p>Which of these is a valid data type in Python?</p>
-                     <input type="radio" name="q2" value="string"> string<br>
-                     <input type="radio" name="q2" value="str"> str<br>
-                     <input type="radio" name="q2" value="text"> text<br>
-                 </div>
-                 <button id="submit-quiz">Submit Quiz</button>
-                 <p id="quiz-result"></p>
-             </div>
-         </section>
-     </main>
+print(name)  # Output: Alice
+print(age)   # Output: 25</code></pre>
+
+            <div class="card" style="border-left: 4px solid #38bdf8; background: rgba(56, 189, 248, 0.1);">
+                <p style="margin:0; color: #e0f2fe;"><strong>💡 Pro Tip:</strong> Variable names can contain letters,
+                    numbers, and underscores, but cannot start with a number. Use <code>snake_case</code> for best
+                    practice (e.g., <code>my_variable_name</code>).</p>
+            </div>
+
+            <h2>2. Common Data Types</h2>
+            <p>Python has a few main types of data you'll use all the time:</p>
+
+            <ul>
+                <li><strong>String (<code>str</code>)</strong>: Text. Always surrounded by quotes (<code>"Hello"</code>
+                    or <code>'Hello'</code>).</li>
+                <li><strong>Integer (<code>int</code>)</strong>: Whole numbers (e.g., <code>5</code>, <code>100</code>,
+                    <code>-42</code>).
+                </li>
+                <li><strong>Float (<code>float</code>)</strong>: Decimal numbers (e.g., <code>3.14</code>,
+                    <code>9.99</code>).
+                </li>
+                <li><strong>Boolean (<code>bool</code>)</strong>: True or False values. Used for logic.</li>
+            </ul>
+
+            <pre><code class="language-python"># String
+city = "New York"
+
+# Integer
+population = 8000000
+
+# Float
+temp = 98.6
+
+# Boolean
+is_sunny = True</code></pre>
+
+            <h2>3. Interactive Quiz</h2>
+            <p>Test your understanding!</p>
+
+            <div class="card">
+                <p><strong>Question:</strong> Which of these is a correct Integer?</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-secondary"
+                        onclick="alert('Try again! Quotes make it a String.')">"42"</button>
+                    <button class="btn btn-primary" onclick="alert('Correct! 42 is a whole number.')">42</button>
+                    <button class="btn btn-secondary"
+                        onclick="alert('Try again! The dot makes it a Float.')">42.0</button>
+                </div>
+            </div>
+
+            <div class="page-nav-links">
+                <a href="../index.html" class="page-nav-link">
+                    <small>Previous</small>
+                    <span>Home</span>
+                </a>
+                <a href="conditionals.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Next Lesson</small>
+                    <span>Logic & Conditionals →</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../index.html">Home</a> | <a href="../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
-    <script>
-        document.getElementById('submit-quiz').addEventListener('click', () => {
-            const q1 = document.querySelector('input[name="q1"]:checked')?.value;
-            const q2 = document.querySelector('input[name="q2"]:checked')?.value;
-            let score = 0;
-            if (q1 === 'x = 5') score++;
-            if (q2 === 'str') score++;
-            document.getElementById('quiz-result').textContent = `You scored ${score}/2`;
-        });
-    </script>
+
 </body>
+
 </html>

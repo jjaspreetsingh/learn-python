@@ -1,190 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Python | Interactive Tutorial</title>
-    
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="Learn Python | Interactive Tutorial">
-    <meta name="description" content="Master Python from Basics to Advanced Applications. Interactive tutorial for beginners and self-taught developers.">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Learn Python | Interactive Tutorial">
-    <meta property="og:description" content="Master Python from Basics to Advanced Applications. Interactive tutorial for beginners and self-taught developers.">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Learn Python | Interactive Tutorial">
-    <meta property="twitter:description" content="Master Python from Basics to Advanced Applications. Interactive tutorial for beginners and self-taught developers.">
-    
-    <!-- Additional Meta Tags -->
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="author" content="jaspreet">
-    <meta name="theme-color" content="#000000">
-    
+    <title>Learn Python | Modern Interactive Tutorial</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"87f269fd394d4b37ae4d43b2567179b7","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </head>
+
 <body>
+
     <header>
-        <h1>Learn Python</h1>
-        <nav role="navigation" aria-label="Main navigation">
-            <a href="#basics">Basics</a>
-            <a href="#intermediate">Intermediate</a>
-            <a href="#projects">Projects</a>
-            <a href="#resources">Resources</a>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="#basics">Basics</a>
+                    <a href="#intermediate">Intermediate</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#advanced">Advanced</a>
+                    <a href="#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <aside id="sidebar" role="complementary" aria-label="Learning progress">
-        <div class="sidebar-header">
-            <h2>Progress</h2>
-        </div>
-        <div class="progress-tracker">
-            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
-            </div>
-            <p id="progress-text">0% Complete</p>
-        </div>
-        <nav class="sidebar-nav">
-            <div class="module">
-                <h3>Basics</h3>
-                <ul>
-                    <li><a href="basics/variables.html" data-section="variables">Variables & Data Types</a></li>
-                    <li><a href="basics/conditionals.html" data-section="conditionals">Conditionals</a></li>
-                    <li><a href="basics/loops.html" data-section="loops">Loops</a></li>
-                </ul>
-            </div>
-            <div class="module">
-                <h3>Intermediate</h3>
-                <ul>
-                    <li><a href="intermediate/functions.html" data-section="functions">Functions</a></li>
-                    <li><a href="intermediate/classes.html" data-section="classes">Classes & Objects</a></li>
-                    <li><a href="intermediate/file_handling.html" data-section="file_handling">File Handling</a></li>
-                </ul>
-            </div>
-            <div class="module">
-                <h3>Projects</h3>
-                <ul>
-                    <li><a href="projects/calculator.html" data-section="calculator">Calculator</a></li>
-                    <li><a href="projects/todo_app.html" data-section="todo">Todo App</a></li>
-                    <li><a href="projects/data_analysis.html" data-section="data_analysis">Data Analysis</a></li>
-                </ul>
-            </div>
-        </nav>
-    </aside>
+    <main class="container">
 
-    <main>
-        <section id="hero">
-            <h2>Master Python from Basics to Advanced Applications</h2>
-            <p>This site guides complete beginners and self-taught developers through Python programming. You'll build real applications and automate tasks confidently. Follow our structured path: start with Basics, advance through Intermediate concepts, and apply skills in Projects.</p>
-            <a href="#basics" class="cta-primary">Start the Basics Path</a>
-            <a href="#advanced" class="cta-secondary">Browse Advanced Topics</a>
+        <section id="hero" class="hero">
+            <h1>Master Python.<br>Build the Future.</h1>
+            <p>From absolute zero to building real-world applications. A modern, interactive journey for the next
+                generation of developers.</p>
+            <div class="hero-btns">
+                <a href="#basics" class="btn btn-primary">Start Learning</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
         </section>
 
         <section id="learning-path">
-            <h2>How You'll Learn</h2>
-            <p>Our structured learning path builds your Python skills step by step, from foundational concepts to advanced applications. Each stage focuses on practical outcomes, helping you gain confidence and real-world capabilities.</p>
-            <ol>
-                <li><strong>Basics</strong>: Learn core syntax and concepts to write simple programs and understand Python fundamentals.</li>
-                <li><strong>Intermediate</strong>: Master functions, classes, and file handling to build more complex scripts and applications.</li>
-                <li><strong>Projects</strong>: Apply your knowledge to real problems, creating tools and apps that solve practical tasks.</li>
-            </ol>
+            <div class="grid">
+                <div class="card">
+                    <h3>🚀 1. Basics</h3>
+                    <p>Core syntax and logic. Understand how computers think.</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ 2. Intermediate</h3>
+                    <p>Functions, classes, and power tools. Write professional code.</p>
+                </div>
+                <div class="card">
+                    <h3>🛠️ 3. Projects</h3>
+                    <p>Build real apps. Calculators, APIs, and Data tools.</p>
+                </div>
+            </div>
         </section>
 
-        <section id="basics">
-            <h2>Build a Strong Foundation</h2>
-            <p>In this section, you'll learn Python's core syntax and basic concepts, enabling you to write simple programs and understand how code works. By the end, you'll confidently create scripts for everyday tasks and feel ready to tackle more complex problems.</p>
-            <p><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank">Watch Python Basics Tutorial on YouTube</a></p>
-            <ul>
-                <li><a href="basics/variables.html">Variables & Data Types</a> - Store and manipulate different types of information, such as numbers and text, to build dynamic programs.</li>
-                <li><a href="basics/conditionals.html">Conditionals</a> - Make decisions in your code with if/else statements, allowing programs to respond to different situations.</li>
-                <li><a href="basics/loops.html">Loops</a> - Repeat actions efficiently with for and while loops, automating repetitive tasks.</li>
-            </ul>
+        <h2 id="basics">The Foundation</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Variables & Types</h3>
+                <ul>
+                    <li><a href="basics/variables.html">Strings & Numbers</a></li>
+                    <li><a href="basics/variables.html#lists">Lists & Dictionaries</a></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Logic & Control</h3>
+                <ul>
+                    <li><a href="basics/conditionals.html">If / Else Logic</a></li>
+                    <li><a href="basics/loops.html">Loops & Iteration</a></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Code Blocks</h3>
+                <pre><code>def hello():
+    print("World")</code></pre>
+            </div>
+        </div>
+
+        <h2 id="intermediate">Level Up</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Structural Power</h3>
+                <ul>
+                    <li><a href="intermediate/functions.html">Functions & Scope</a></li>
+                    <li><a href="intermediate/classes.html">OOP & Classes</a></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Data Mastery</h3>
+                <ul>
+                    <li><a href="intermediate/file_handling.html">File I/O</a></li>
+                    <li><a href="intermediate/modules.html">Modules & Pip</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="projects">Practical Labs</h2>
+        <div class="grid">
+            <!-- Calculator Demo moved into a card/container -->
+            <div class="card demo-container">
+                <h3>🧮 Calculator Lab</h3>
+                <p>Try the live Python logic running in JS:</p>
+
+                <div class="calculator-container">
+                    <input type="text" id="calc-display" readonly>
+                    <div class="calc-buttons">
+                        <button class="calc-btn clear" onclick="clearDisplay()">C</button>
+                        <button class="calc-btn op" onclick="appendOperator('/')">/</button>
+                        <button class="calc-btn op" onclick="appendOperator('*')">×</button>
+                        <button class="calc-btn" onclick="deleteLast()">⌫</button>
+
+                        <button class="calc-btn" onclick="appendNumber('7')">7</button>
+                        <button class="calc-btn" onclick="appendNumber('8')">8</button>
+                        <button class="calc-btn" onclick="appendNumber('9')">9</button>
+                        <button class="calc-btn op" onclick="appendOperator('-')">-</button>
+
+                        <button class="calc-btn" onclick="appendNumber('4')">4</button>
+                        <button class="calc-btn" onclick="appendNumber('5')">5</button>
+                        <button class="calc-btn" onclick="appendNumber('6')">6</button>
+                        <button class="calc-btn op" onclick="appendOperator('+')">+</button>
+
+                        <button class="calc-btn" onclick="appendNumber('1')">1</button>
+                        <button class="calc-btn" onclick="appendNumber('2')">2</button>
+                        <button class="calc-btn" onclick="appendNumber('3')">3</button>
+                        <div style="grid-row: span 2;">
+                            <button class="calc-btn equal" style="height: 100%;" onclick="calculateResult()">=</button>
+                        </div>
+
+                        <button class="calc-btn" onclick="appendNumber('0')" style="grid-column: span 2;">0</button>
+                        <button class="calc-btn" onclick="appendNumber('.')">.</button>
+                    </div>
+                </div>
+                <p><a href="projects/calculator.html">View Source Code →</a></p>
+            </div>
+
+            <div class="card demo-container">
+                <h3>✅ Todo App Lab</h3>
+                <div class="todo-container">
+                    <div style="display: flex; margin-bottom: 1rem;">
+                        <input type="text" id="task-input" placeholder="Add a task...">
+                        <button id="add-task-btn">Add</button>
+                    </div>
+                    <ul id="todo-list" style="list-style: none; padding: 0;">
+                        <!-- JS will populate -->
+                    </ul>
+                </div>
+                <p><a href="projects/todo_app.html">View Source Code →</a></p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Data Analysis</h3>
+                <p>Learn to process lists of numbers, calculate averages, and find insights using Python statistics.</p>
+                <br>
+                <a href="projects/data_analysis.html" class="btn btn-secondary">Start Project</a>
+            </div>
+        </div>
+
+        <h2 id="advanced">Advanced (New!)</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🕷️ Web Scraper</h3>
+                <p>Build a bot to extract data from websites automatically.</p>
+                <a href="projects/advanced/web_scraper.html">View Project →</a>
+            </div>
+            <div class="card">
+                <h3>🌐 REST API</h3>
+                <p>Create your own API server using Python.</p>
+                <a href="projects/advanced/rest_api.html">View Project →</a>
+            </div>
+            <div class="card">
+                <h3>💬 Chat App</h3>
+                <p>Real-time messaging with WebSockets.</p>
+                <a href="projects/advanced/chat_app.html">View Project →</a>
+            </div>
+            <div class="card">
+                <h3>🔄 Data Pipeline</h3>
+                <p>Automate data cleaning and processing (ETL).</p>
+                <a href="projects/advanced/data_pipeline.html">View Project →</a>
+            </div>
+            <div class="card">
+                <h3>🚀 DevOps Script</h3>
+                <p>Automate your deployments with Python.</p>
+                <a href="projects/advanced/deployment_script.html">View Project →</a>
+            </div>
+        </div>
+
+        <section id="resources" style="margin-top: 4rem;">
+            <h2>Resources</h2>
+            <div class="grid">
+                <a href="resources/cheat_sheets.html" class="card" style="text-decoration: none; color: inherit;">
+                    <h3>📜 Cheat Sheets</h3>
+                    <p>Quick references for syntax and methods.</p>
+                </a>
+                <a href="resources/useful_links.html" class="card" style="text-decoration: none; color: inherit;">
+                    <h3>🔗 Useful Links</h3>
+                    <p>Community docs, libraries, and advanced tutorials.</p>
+                </a>
+            </div>
         </section>
 
-        <section id="intermediate">
-            <h2>Expand Your Capabilities</h2>
-            <p>Here, you'll explore more powerful Python features, learning to organize code into reusable parts and handle data effectively. You'll gain the skills to build structured applications and manage files, preparing you for real-world projects.</p>
-            <ul>
-                <li><a href="intermediate/functions.html">Functions</a> - Write reusable code blocks that perform specific tasks, making your programs more efficient and maintainable.</li>
-                <li><a href="intermediate/classes.html">Classes & Objects</a> - Understand object-oriented programming basics to model real-world entities and create organized code.</li>
-                <li><a href="intermediate/file_handling.html">File Handling</a> - Read and write files to store and retrieve data, enabling persistent applications.</li>
-            </ul>
-        </section>
-
-        <section id="projects">
-            <h2>Apply Your Skills to Real Problems</h2>
-            <p>Put theory into practice by building complete applications. These projects teach you to solve practical challenges, from simple calculators to data analysis tools, giving you portfolio-worthy examples and the confidence to create your own solutions.</p>
-            <h3>Beginner Projects</h3>
-            <ul>
-                <li><a href="projects/calculator.html">Calculator</a> - Build a command-line calculator that performs basic arithmetic, practicing user input and error handling.</li>
-                <li><a href="projects/todo_app.html">Todo App</a> - Create a task management application, mastering data structures and user interfaces.</li>
-            </ul>
-            <h3>Intermediate Projects</h3>
-            <ul>
-                <li><a href="projects/data_analysis.html">Data Analysis</a> - Analyze sample datasets with statistics, learning to process and visualize data effectively.</li>
-            </ul>
-             <h3>Advanced Projects</h3>
-             <ul>
-                 <li><a href="projects/advanced/rest_api.html">REST API with Flask/FastAPI</a> - Build a web API that handles requests and responses, practicing server-side development and data serialization.</li>
-                 <li><a href="projects/advanced/web_scraper.html">Web Scraper with Rate Limiting</a> - Create a tool to extract data from websites responsibly, learning web scraping and ethical automation.</li>
-                 <li><a href="projects/advanced/chat_app.html">Real-time Chat App (WebSockets)</a> - Develop a live messaging application, exploring real-time communication and concurrent connections.</li>
-                 <li><a href="projects/advanced/data_pipeline.html">Data Pipeline (ETL)</a> - Construct an automated system to extract, transform, and load data, mastering workflow automation.</li>
-                 <li><a href="projects/advanced/deployment_script.html">Automated Deployment Script</a> - Write scripts for deploying applications, practicing DevOps and infrastructure management.</li>
-             </ul>
-        </section>
-
-
-
-        <section id="resources">
-            <h2>Additional Tools and References</h2>
-            <p>Beyond the tutorials, explore curated resources to deepen your learning. From quick cheat sheets to advanced books and communities, these materials support your journey at every level.</p>
-            <ul>
-                <li><a href="resources/cheat_sheets.html">Cheat Sheets</a> - Quick reference guides for Python syntax and common operations.</li>
-                <li><a href="resources/useful_links.html">Useful Links</a> - Tutorials, courses, and communities for beginners and advanced learners, including specialized resources for frameworks, testing, and deployment.</li>
-            </ul>
-        </section>
-
-
-
-        <section id="trust">
-            <h3>Who This Is For</h3>
-            <p>Beginners with no programming experience, self-taught developers expanding their skills, and advanced learners seeking deeper topics.</p>
-
-            <h3>What You'll Need</h3>
-            <p>Only a computer, internet access, and curiosity—no prior experience required.</p>
-
-            <h3>Frequently Asked Questions</h3>
-            <ul>
-                <li><strong>Do I need programming experience?</strong> No, we start from absolute basics.</li>
-                <li><strong>How long does it take to learn?</strong> Progress at your own pace; most complete the basics in a few weeks.</li>
-
-                <li><strong>Can I build real projects?</strong> Absolutely—our projects section guides you through practical applications.</li>
-            </ul>
-        </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <nav>
-                <a href="#basics">Basics</a>
-                <a href="#intermediate">Intermediate</a>
-                <a href="#projects">Projects</a>
-                <a href="#resources">Resources</a>
-            </nav>
-            <a href="#top">Home</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container">
+            <div class="footer-content">
+                <nav>
+                    <a href="#basics">Basics</a>
+                    <a href="#intermediate">Intermediate</a>
+                    <a href="#projects">Projects</a>
+                </nav>
+                <p>&copy; 2025 Learn Python. Designed by Jaspreet.</p>
+            </div>
         </div>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

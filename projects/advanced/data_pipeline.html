@@ -1,189 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Pipeline Project - Learn Python</title>
+    <title>Project: Data Pipeline | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <script src="../../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../../index.html#basics">Basics</a>
-        <a href="../../index.html#intermediate">Intermediate</a>
-        <a href="../../index.html#projects">Projects</a>
-        <a href="../../index.html#advanced">Advanced</a>
-        <a href="../../index.html#resources">Resources</a>
-        <a href="../../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Data Pipeline (ETL)</h2>
-            <p>Construct an automated system to extract, transform, and load data. This project demonstrates workflow automation, data processing, and pipeline design.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../../index.html#basics">Basics</a>
+                    <a href="../../index.html#intermediate">Intermediate</a>
+                    <a href="../../index.html#projects">Projects</a>
+                    <a href="../../index.html#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>Project Requirements</h3>
-            <ul>
-                <li>Extract data from multiple sources (CSV, API, database)</li>
-                <li>Transform data (cleaning, validation, aggregation)</li>
-                <li>Load data into a target system</li>
-                <li>Implement error handling and logging</li>
-                <li>Add scheduling for automated execution</li>
-            </ul>
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Advanced Projects</h3>
+            <a href="web_scraper.html">Web Scraper</a>
+            <a href="rest_api.html">REST API</a>
+            <a href="chat_app.html">Chat App</a>
+            <a href="data_pipeline.html" class="active">Data Pipeline</a>
+            <a href="deployment_script.html">Deployment Script</a>
+        </aside>
 
-            <h3>Sample Implementation</h3>
-            <div class="example">
-                <h4>etl_pipeline.py</h4>
-                <pre><code>import pandas as pd
-import requests
-import sqlite3
-import logging
-from datetime import datetime
-
-# Set up logging
-logging.basicConfig(filename='etl_pipeline.log', level=logging.INFO,
-                   format='%(asctime)s - %(levelname)s - %(message)s')
-
-class ETLPipeline:
-    def __init__(self):
-        self.db_path = 'pipeline_data.db'
-        self.setup_database()
-    
-    def setup_database(self):
-        """Create database tables"""
-        conn = sqlite3.connect(self.db_path)
-        conn.execute('''
-            CREATE TABLE IF NOT EXISTS sales_data (
-                id INTEGER PRIMARY KEY,
-                date TEXT,
-                product TEXT,
-                quantity INTEGER,
-                price REAL,
-                total REAL,
-                processed_at TEXT
-            )
-        ''')
-        conn.commit()
-        conn.close()
-    
-    def extract_csv(self, file_path):
-        """Extract data from CSV file"""
-        try:
-            df = pd.read_csv(file_path)
-            logging.info(f"Extracted {len(df)} rows from CSV")
-            return df
-        except Exception as e:
-            logging.error(f"Error extracting CSV: {e}")
-            return None
-    
-    def extract_api(self, url):
-        """Extract data from API"""
-        try:
-            response = requests.get(url)
-            response.raise_for_status()
-            data = response.json()
-            df = pd.DataFrame(data)
-            logging.info(f"Extracted {len(df)} rows from API")
-            return df
-        except Exception as e:
-            logging.error(f"Error extracting from API: {e}")
-            return None
-    
-    def transform(self, df):
-        """Transform and clean data"""
-        try:
-            # Remove duplicates
-            df = df.drop_duplicates()
-            
-            # Handle missing values
-            df = df.dropna(subset=['product', 'quantity', 'price'])
-            
-            # Calculate total if not present
-            if 'total' not in df.columns:
-                df['total'] = df['quantity'] * df['price']
-            
-            # Add processing timestamp
-            df['processed_at'] = datetime.now().isoformat()
-            
-            # Validate data types
-            df['quantity'] = pd.to_numeric(df['quantity'], errors='coerce')
-            df['price'] = pd.to_numeric(df['price'], errors='coerce')
-            df['total'] = pd.to_numeric(df['total'], errors='coerce')
-            
-            logging.info(f"Transformed data: {len(df)} rows after cleaning")
-            return df
-        except Exception as e:
-            logging.error(f"Error transforming data: {e}")
-            return None
-    
-    def load(self, df):
-        """Load data into database"""
-        try:
-            conn = sqlite3.connect(self.db_path)
-            df.to_sql('sales_data', conn, if_exists='append', index=False)
-            conn.commit()
-            conn.close()
-            logging.info(f"Loaded {len(df)} rows into database")
-            return True
-        except Exception as e:
-            logging.error(f"Error loading data: {e}")
-            return False
-    
-    def run_pipeline(self):
-        """Run the complete ETL pipeline"""
-        logging.info("Starting ETL pipeline")
-        
-        # Extract from multiple sources
-        csv_data = self.extract_csv('sample_sales.csv')
-        api_data = self.extract_api('https://api.example.com/sales')
-        
-        # Combine data
-        if csv_data is not None and api_data is not None:
-            combined_data = pd.concat([csv_data, api_data], ignore_index=True)
-        elif csv_data is not None:
-            combined_data = csv_data
-        elif api_data is not None:
-            combined_data = api_data
-        else:
-            logging.error("No data extracted from any source")
-            return False
-        
-        # Transform
-        transformed_data = self.transform(combined_data)
-        if transformed_data is None:
-            return False
-        
-        # Load
-        success = self.load(transformed_data)
-        
-        logging.info("ETL pipeline completed")
-        return success
-
-if __name__ == "__main__":
-    pipeline = ETLPipeline()
-    pipeline.run_pipeline()</code></pre>
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../../index.html">Home</a> <span>/</span> Advanced <span>/</span> Data Pipeline
             </div>
 
-            <h3>Extensions</h3>
-            <ul>
-                <li>Add data quality checks and validation rules</li>
-                <li>Implement incremental loading (only new/changed data)</li>
-                <li>Add monitoring and alerting for pipeline failures</li>
-                <li>Create a web dashboard to visualize pipeline metrics</li>
-                <li>Deploy pipeline to cloud infrastructure (AWS Lambda, Google Cloud)</li>
-            </ul>
-        </section>
-    </main>
+            <h1>Project: Data Pipeline (ETL)</h1>
+            <p><strong>ETL</strong> stands for <strong>Extract, Transform, Load</strong>. It's how companies move data
+                from A to B while cleaning it up.</p>
+
+            <h2>1. The Concept</h2>
+            <ol>
+                <li><strong>Extract</strong>: Read data from CSVs, APIs, or Databases.</li>
+                <li><strong>Transform</strong>: Clean, filter, and calculate new values.</li>
+                <li><strong>Load</strong>: Save the clean data to a final database.</li>
+            </ol>
+
+            <h2>2. The Code</h2>
+            <p>We'll use `pandas` for processing and `sqlite3` for storage.</p>
+
+            <pre><code class="language-python">import pandas as pd
+import sqlite3
+
+def etl_process():
+    # 1. Extract
+    print("Extracting data...")
+    try:
+        data = pd.read_csv('raw_sales.csv')
+    except FileNotFoundError:
+        print("Error: raw_sales.csv not found. Creating dummy data.")
+        data = pd.DataFrame({
+            'product': ['Apple', 'Banana', 'Orange', 'Apple', None],
+            'price': [1.2, 0.5, 0.8, 1.2, 0.0],
+            'quantity': [10, 20, 15, 5, 0]
+        })
+
+    # 2. Transform
+    print("Transforming data...")
+    # Remove rows with missing data
+    clean_data = data.dropna()
+    
+    # Calculate Total Sales
+    clean_data['total_sales'] = clean_data['price'] * clean_data['quantity']
+    
+    # Group by Product
+    summary = clean_data.groupby('product')['total_sales'].sum().reset_index()
+    print("Cleaned Data Preview:")
+    print(summary)
+
+    # 3. Load
+    print("Loading to Database...")
+    conn = sqlite3.connect('warehouse.db')
+    summary.to_sql('sales_summary', conn, if_exists='replace', index=False)
+    conn.close()
+    print("Success! Data loaded to warehouse.db")
+
+if __name__ == "__main__":
+    etl_process()</code></pre>
+
+            <div class="card" style="border-left: 4px solid #10b981; background: rgba(16, 185, 129, 0.1);">
+                <p style="margin:0; color: #ecfdf5;"><strong>Pro Tip:</strong> In the real world, tools like Airflow or
+                    Prefect run these scripts automatically every night.</p>
+            </div>
+
+            <h2>3. Challenge</h2>
+            <p>Add a logging step. Use Python's `logging` module to save a file named `pipeline.log` that records when
+                the script started and finished.</p>
+
+            <div class="page-nav-links">
+                <a href="chat_app.html" class="page-nav-link">
+                    <small>Previous Project</small>
+                    <span>Chat App</span>
+                </a>
+                <a href="deployment_script.html" class="page-nav-link"
+                    style="text-align: right; align-items: flex-end;">
+                    <small>Final Project</small>
+                    <span>Deployment Script →</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../../index.html">Home</a> | <a href="../../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

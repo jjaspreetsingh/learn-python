@@ -1,67 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator Project - Learn Python</title>
+    <title>Project: Calculator | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
-    <script src="calculator.js" defer></script>
+    <script src="../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../index.html#basics">Basics</a>
-        <a href="../index.html#intermediate">Intermediate</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#advanced">Advanced</a>
-        <a href="../index.html#resources">Resources</a>
-        <a href="../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Calculator Project</h2>
-            <p>Build a command-line calculator that performs basic arithmetic operations. This project demonstrates user input, functions, and error handling.</p>
-
-            <h3>Project Requirements</h3>
-            <ul>
-                <li>Accept two numbers from user input</li>
-                <li>Accept an operation (+, -, *, /)</li>
-                <li>Perform the calculation and display result</li>
-                <li>Handle division by zero</li>
-                <li>Allow multiple calculations in a loop</li>
-            </ul>
-
-            <h3>Try It Yourself</h3>
-            <div class="calculator-container">
-                <input type="text" id="calc-display" readonly>
-                <div class="calc-buttons">
-                    <button class="calc-btn" data-value="7">7</button>
-                    <button class="calc-btn" data-value="8">8</button>
-                    <button class="calc-btn" data-value="9">9</button>
-                    <button class="calc-btn op" data-value="/">/</button>
-                    <button class="calc-btn" data-value="4">4</button>
-                    <button class="calc-btn" data-value="5">5</button>
-                    <button class="calc-btn" data-value="6">6</button>
-                    <button class="calc-btn op" data-value="*">*</button>
-                    <button class="calc-btn" data-value="1">1</button>
-                    <button class="calc-btn" data-value="2">2</button>
-                    <button class="calc-btn" data-value="3">3</button>
-                    <button class="calc-btn op" data-value="-">-</button>
-                    <button class="calc-btn" data-value="0">0</button>
-                    <button class="calc-btn" data-value=".">.</button>
-                    <button class="calc-btn equal" data-value="=">=</button>
-                    <button class="calc-btn op" data-value="+">+</button>
-                    <button class="calc-btn clear" data-value="C">C</button>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../index.html#basics">Basics</a>
+                    <a href="../index.html#intermediate">Intermediate</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#resources">Resources</a>
                 </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Basics</h3>
+            <a href="../basics/variables.html">Variables & Types</a>
+            <a href="../basics/conditionals.html">Logic & If/Else</a>
+            <a href="../basics/loops.html">Loops</a>
+
+            <h3>Intermediate</h3>
+            <a href="../intermediate/functions.html">Functions</a>
+            <a href="../intermediate/classes.html">Classes (OOP)</a>
+            <a href="../intermediate/file_handling.html">File Handling</a>
+            <a href="../intermediate/modules.html">Modules & Pip</a>
+
+            <h3>Projects</h3>
+            <a href="calculator.html" class="active">Calculator</a>
+            <a href="todo_app.html">Todo App</a>
+            <a href="data_analysis.html">Data Analysis</a>
+        </aside>
+
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> <span>/</span> Projects <span>/</span> Calculator
             </div>
 
-            <h3>Sample Implementation</h3>
-            <div class="example">
-                <h4>calculator.py</h4>
-                <pre><code>def add(x, y):
+            <h1>Project: Build a Calculator</h1>
+            <p>Let's build something real! A command-line calculator is a perfect starter project to practice inputs,
+                numbers, and if/else logic.</p>
+
+            <h2>1. The Plan</h2>
+            <ol>
+                <li>Ask the user for two numbers.</li>
+                <li>Ask the user for an operation (+, -, *, /).</li>
+                <li>Perform the math.</li>
+                <li>Print the result.</li>
+            </ol>
+
+            <h2>2. The Code</h2>
+
+            <pre><code class="language-python">def add(x, y):
     return x + y
 
 def subtract(x, y):
@@ -72,60 +79,55 @@ def multiply(x, y):
 
 def divide(x, y):
     if y == 0:
-        return "Error: Division by zero!"
+        return "Error! Cannot divide by zero."
     return x / y
 
-def calculator():
-    print("Simple Calculator")
-    print("Operations: +, -, *, /")
+print("Select operation:")
+print("1. Add")
+print("2. Subtract")
+print("3. Multiply")
+print("4. Divide")
 
-    while True:
-        try:
-            num1 = float(input("Enter first number: "))
-            operation = input("Enter operation: ")
-            num2 = float(input("Enter second number: "))
+choice = input("Enter choice(1/2/3/4): ")
 
-            if operation == "+":
-                result = add(num1, num2)
-            elif operation == "-":
-                result = subtract(num1, num2)
-            elif operation == "*":
-                result = multiply(num1, num2)
-            elif operation == "/":
-                result = divide(num1, num2)
-            else:
-                print("Invalid operation!")
-                continue
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
 
-            print(f"Result: {result}")
+if choice == '1':
+    print(num1, "+", num2, "=", add(num1, num2))
+elif choice == '2':
+    print(num1, "-", num2, "=", subtract(num1, num2))
+elif choice == '3':
+    print(num1, "*", num2, "=", multiply(num1, num2))
+elif choice == '4':
+    print(num1, "/", num2, "=", divide(num1, num2))
+else:
+    print("Invalid Input")</code></pre>
 
-            again = input("Calculate again? (y/n): ")
-            if again.lower() != 'y':
-                break
+            <h2>3. Challenge</h2>
+            <p>Can you wrap this in a <code>while</code> loop so the user can perform multiple calculations without
+                restarting the program?</p>
 
-        except ValueError:
-            print("Invalid input! Please enter numbers.")
-
-calculator()</code></pre>
+            <div class="page-nav-links">
+                <a href="../intermediate/file_handling.html" class="page-nav-link">
+                    <small>Previous Lesson</small>
+                    <span>File Handling</span>
+                </a>
+                <a href="todo_app.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Next Project</small>
+                    <span>Todo List App →</span>
+                </a>
             </div>
 
-            <h3>Extensions</h3>
-            <ul>
-                <li>Add more operations (exponentiation, square root)</li>
-                <li>Implement a graphical interface with tkinter</li>
-                <li>Add memory functions (store/recall previous results)</li>
-                <li>Support for complex expressions</li>
-            </ul>
-        </section>
-    </main>
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../index.html">Home</a> | <a href="../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

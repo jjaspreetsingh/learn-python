@@ -1,121 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conditionals - Learn Python</title>
+    <title>Conditionals & Logic | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../index.html#basics">Basics</a>
-        <a href="../index.html#intermediate">Intermediate</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#advanced">Advanced</a>
-        <a href="../index.html#resources">Resources</a>
-        <a href="../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Conditionals</h2>
-            <p>Conditional statements allow your program to make decisions based on certain conditions. The most common conditional is the <code>if</code> statement.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../index.html#basics">Basics</a>
+                    <a href="../index.html#intermediate">Intermediate</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>If Statement</h3>
-            <p>The basic syntax:</p>
-            <pre><code>if condition:
-    # code to execute if condition is True</code></pre>
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Basics</h3>
+            <a href="variables.html">Variables & Types</a>
+            <a href="conditionals.html" class="active">Logic & If/Else</a>
+            <a href="loops.html">Loops</a>
 
-            <div class="example">
-                <h4>Example:</h4>
-                <pre><code>age = 18
+            <h3>Intermediate</h3>
+            <a href="../intermediate/functions.html">Functions</a>
+            <a href="../intermediate/classes.html">Classes (OOP)</a>
+            <a href="../intermediate/file_handling.html">File Handling</a>
+            <a href="../intermediate/modules.html">Modules & Pip</a>
+
+            <h3>Projects</h3>
+            <a href="../projects/calculator.html">Calculator</a>
+            <a href="../projects/todo_app.html">Todo App</a>
+            <a href="../projects/data_analysis.html">Data Analysis</a>
+        </aside>
+
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> <span>/</span> Basics <span>/</span> Conditionals
+            </div>
+
+            <h1>Logic & Conditionals</h1>
+            <p>Programs need to make decisions. "If it's raining, take an umbrella." In Python, we use <code>if</code>,
+                <code>elif</code>, and <code>else</code> to control the flow of the program.
+            </p>
+
+            <h2>1. The If Statement</h2>
+            <p>The <code>if</code> statement checks if a condition is True. If it is, the indented code block runs.</p>
+
+            <pre><code class="language-python">age = 20
 
 if age >= 18:
-    print("You are an adult")</code></pre>
+    print("You are an adult.")
+    
+# Output: You are an adult.</code></pre>
+
+            <div class="card" style="border-left: 4px solid #f43f5e; background: rgba(244, 63, 94, 0.1);">
+                <p style="margin:0; color: #ffe4e6;"><strong>⚠️ Important:</strong> Indentation matters! The line after
+                    the <code>:</code> must be indented (usually 4 spaces). This tells Python "this code belongs to the
+                    if statement".</p>
             </div>
 
-            <h3>If-Else Statement</h3>
-            <p>Add an else clause to handle the opposite case:</p>
-            <pre><code>if condition:
-    # code if True
-else:
-    # code if False</code></pre>
+            <h2>2. Else and Elif</h2>
+            <p>What if the condition isn't true? Use <code>else</code> to handle "everything else", or <code>elif</code>
+                (else if) to check specific alternative conditions.</p>
 
-            <div class="example">
-                <h4>Example:</h4>
-                <pre><code>temperature = 25
-
-if temperature > 30:
-    print("It's hot outside")
-else:
-    print("It's not too hot")</code></pre>
-            </div>
-
-            <h3>If-Elif-Else Statement</h3>
-            <p>Use elif for multiple conditions:</p>
-            <pre><code>if condition1:
-    # code
-elif condition2:
-    # code
-else:
-    # code</code></pre>
-
-            <div class="example">
-                <h4>Example:</h4>
-                <pre><code>score = 85
+            <pre><code class="language-python">score = 85
 
 if score >= 90:
     print("Grade: A")
 elif score >= 80:
     print("Grade: B")
-elif score >= 70:
-    print("Grade: C")
 else:
-    print("Grade: F")</code></pre>
-            </div>
+    print("Grade: C or lower")</code></pre>
 
-            <h3>Comparison Operators</h3>
+            <h2>3. Logical Operators</h2>
+            <p>You can combine conditions using <code>and</code>, <code>or</code>, and <code>not</code>.</p>
             <ul>
-                <li><code>==</code> Equal to</li>
-                <li><code>!=</code> Not equal to</li>
-                <li><code>&gt;</code> Greater than</li>
-                <li><code>&lt;</code> Less than</li>
-                <li><code>&gt;=</code> Greater than or equal to</li>
-                <li><code>&lt;=</code> Less than or equal to</li>
+                <li><code>width > 10 and height > 10</code> (Both must be true)</li>
+                <li><code>day == "Sat" or day == "Sun"</code> (Either can be true)</li>
+                <li><code>not is_hungry</code> (Flips true to false)</li>
             </ul>
 
-            <h3>Logical Operators</h3>
-            <ul>
-                <li><code>and</code> Both conditions must be True</li>
-                <li><code>or</code> At least one condition must be True</li>
-                <li><code>not</code> Reverses the condition</li>
-            </ul>
-
-            <div class="example">
-                <h4>Example with logical operators:</h4>
-                <pre><code>age = 25
-has_license = True
-
-if age >= 18 and has_license:
-    print("You can drive")
-elif age >= 18 and not has_license:
-    print("You need a license to drive")
-else:
-    print("You are too young to drive")</code></pre>
+            <div class="page-nav-links">
+                <a href="variables.html" class="page-nav-link">
+                    <small>Previous</small>
+                    <span>Variables & Types</span>
+                </a>
+                <a href="loops.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Next Lesson</small>
+                    <span>Loops & Iteration →</span>
+                </a>
             </div>
-        </section>
-    </main>
+
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../index.html">Home</a> | <a href="../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

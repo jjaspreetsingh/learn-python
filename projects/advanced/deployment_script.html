@@ -1,220 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automated Deployment Script Project - Learn Python</title>
+    <title>Project: DevOps Script | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <script src="../../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../../index.html#basics">Basics</a>
-        <a href="../../index.html#intermediate">Intermediate</a>
-        <a href="../../index.html#projects">Projects</a>
-        <a href="../../index.html#advanced">Advanced</a>
-        <a href="../../index.html#resources">Resources</a>
-        <a href="../../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Automated Deployment Script</h2>
-            <p>Write scripts for deploying applications to production environments. This project demonstrates DevOps practices, infrastructure automation, and deployment workflows.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../../index.html#basics">Basics</a>
+                    <a href="../../index.html#intermediate">Intermediate</a>
+                    <a href="../../index.html#projects">Projects</a>
+                    <a href="../../index.html#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>Project Requirements</h3>
-            <ul>
-                <li>Create a deployment script for a web application</li>
-                <li>Handle environment configuration (dev/staging/prod)</li>
-                <li>Implement rollback functionality</li>
-                <li>Add health checks and monitoring</li>
-                <li>Automate common deployment tasks (build, test, deploy)</li>
-            </ul>
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Advanced Projects</h3>
+            <a href="web_scraper.html">Web Scraper</a>
+            <a href="rest_api.html">REST API</a>
+            <a href="chat_app.html">Chat App</a>
+            <a href="data_pipeline.html">Data Pipeline</a>
+            <a href="deployment_script.html" class="active">Deployment Script</a>
+        </aside>
 
-            <h3>Sample Implementation</h3>
-            <div class="example">
-                <h4>deploy.py</h4>
-                <pre><code>#!/usr/bin/env python3
-import os
-import sys
-import subprocess
-import argparse
-import logging
-from pathlib import Path
-
-# Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-class Deployer:
-    def __init__(self, app_name, environment):
-        self.app_name = app_name
-        self.environment = environment
-        self.project_root = Path(__file__).parent
-        self.backup_dir = self.project_root / 'backups'
-        self.backup_dir.mkdir(exist_ok=True)
-    
-    def run_command(self, command, cwd=None, check=True):
-        """Run a shell command and return success status"""
-        try:
-            logging.info(f"Running: {' '.join(command)}")
-            result = subprocess.run(command, cwd=cwd, capture_output=True, text=True, check=check)
-            if result.stdout:
-                logging.info(result.stdout)
-            return True
-        except subprocess.CalledProcessError as e:
-            logging.error(f"Command failed: {e}")
-            if e.stderr:
-                logging.error(e.stderr)
-            return False
-    
-    def backup_current_deployment(self):
-        """Create backup of current deployment"""
-        logging.info("Creating backup of current deployment")
-        
-        backup_name = f"{self.app_name}_{self.environment}_backup"
-        backup_path = self.backup_dir / backup_name
-        
-        # Simple backup - copy current directory (excluding backups)
-        if self.run_command(['cp', '-r', '.', str(backup_path)], cwd=self.project_root):
-            logging.info(f"Backup created at {backup_path}")
-            return backup_path
-        return None
-    
-    def install_dependencies(self):
-        """Install project dependencies"""
-        logging.info("Installing dependencies")
-        return self.run_command(['pip', 'install', '-r', 'requirements.txt'])
-    
-    def run_tests(self):
-        """Run test suite"""
-        logging.info("Running tests")
-        return self.run_command(['python', '-m', 'pytest', 'tests/', '-v'])
-    
-    def build_application(self):
-        """Build the application"""
-        logging.info("Building application")
-        # For a Flask/Django app, this might involve collecting static files
-        # For this example, we'll assume a simple build step
-        return self.run_command(['python', 'build.py']) if Path('build.py').exists() else True
-    
-    def deploy_to_server(self):
-        """Deploy to server (simplified example)"""
-        logging.info(f"Deploying to {self.environment} environment")
-        
-        # This would typically involve:
-        # - Copying files to server
-        # - Restarting services
-        # - Updating configuration
-        
-        # For demonstration, we'll simulate with local operations
-        if self.environment == 'production':
-            # Simulate production deployment
-            return self.run_command(['echo', 'Deploying to production server'])
-        elif self.environment == 'staging':
-            return self.run_command(['echo', 'Deploying to staging server'])
-        else:
-            return self.run_command(['echo', 'Deploying to development server'])
-    
-    def health_check(self):
-        """Perform health check after deployment"""
-        logging.info("Performing health check")
-        # This would typically check if the application is responding
-        return self.run_command(['curl', '-f', 'http://localhost:5000/health'])
-    
-    def rollback(self, backup_path):
-        """Rollback to previous deployment"""
-        logging.info(f"Rolling back to {backup_path}")
-        return self.run_command(['cp', '-r', str(backup_path), '.'], cwd=self.project_root)
-    
-    def deploy(self, skip_tests=False, skip_backup=False):
-        """Main deployment workflow"""
-        logging.info(f"Starting deployment of {self.app_name} to {self.environment}")
-        
-        # Backup current deployment
-        backup_path = None
-        if not skip_backup:
-            backup_path = self.backup_current_deployment()
-            if not backup_path:
-                logging.error("Backup failed, aborting deployment")
-                return False
-        
-        # Install dependencies
-        if not self.install_dependencies():
-            logging.error("Dependency installation failed")
-            return False
-        
-        # Run tests
-        if not skip_tests:
-            if not self.run_tests():
-                logging.error("Tests failed, aborting deployment")
-                if backup_path:
-                    self.rollback(backup_path)
-                return False
-        
-        # Build application
-        if not self.build_application():
-            logging.error("Build failed")
-            if backup_path:
-                self.rollback(backup_path)
-            return False
-        
-        # Deploy
-        if not self.deploy_to_server():
-            logging.error("Deployment failed")
-            if backup_path:
-                self.rollback(backup_path)
-            return False
-        
-        # Health check
-        if not self.health_check():
-            logging.warning("Health check failed, but deployment completed")
-        
-        logging.info("Deployment completed successfully")
-        return True
-
-def main():
-    parser = argparse.ArgumentParser(description='Deploy application')
-    parser.add_argument('--app', required=True, help='Application name')
-    parser.add_argument('--env', required=True, choices=['dev', 'staging', 'prod'], 
-                       help='Deployment environment')
-    parser.add_argument('--skip-tests', action='store_true', help='Skip running tests')
-    parser.add_argument('--skip-backup', action='store_true', help='Skip creating backup')
-    
-    args = parser.parse_args()
-    
-    deployer = Deployer(args.app, args.env)
-    success = deployer.deploy(skip_tests=args.skip_tests, skip_backup=args.skip_backup)
-    
-    sys.exit(0 if success else 1)
-
-if __name__ == "__main__":
-    main()</code></pre>
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../../index.html">Home</a> <span>/</span> Advanced <span>/</span> DevOps
             </div>
 
-            <h3>Usage Example</h3>
-            <pre><code>python deploy.py --app myapp --env staging
-python deploy.py --app myapp --env prod --skip-tests</code></pre>
+            <h1>Project: Automated Deployment</h1>
+            <p>Don't do manual work. Write a Python script to test, build, and "deploy" your application automatically.
+            </p>
 
-            <h3>Extensions</h3>
-            <ul>
-                <li>Add support for Docker containerization</li>
-                <li>Implement blue-green deployment strategy</li>
-                <li>Add integration with CI/CD pipelines (GitHub Actions, Jenkins)</li>
-                <li>Create deployment dashboard with progress tracking</li>
-                <li>Add support for multi-server deployments and load balancing</li>
-            </ul>
-        </section>
-    </main>
+            <h2>1. The Goal</h2>
+            <p>We want a script that runs commands for us. It should:</p>
+            <ol>
+                <li>Run tests (`pytest`).</li>
+                <li>If tests pass, create a backup.</li>
+                <li>"Deploy" the new code (copy files).</li>
+            </ol>
+
+            <h2>2. The Automation Code</h2>
+
+            <pre><code class="language-python">import subprocess
+import shutil
+import datetime
+import os
+
+def run_step(command, step_name):
+    print(f"--- Starting {step_name} ---")
+    result = subprocess.run(command, shell=True)
+    if result.returncode == 0:
+        print(f"✅ {step_name} Success!")
+        return True
+    else:
+        print(f"❌ {step_name} Failed.")
+        return False
+
+def deploy():
+    # 1. Run Tests
+    if not run_step("echo 'Running tests...' && sleep 1", "Tests"):
+        return
+
+    # 2. Backup
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    backup_dir = f"backup_{timestamp}"
+    print(f"Creating backup: {backup_dir}")
+    os.makedirs(backup_dir, exist_ok=True)
+    # Simulate backup
+    with open(f"{backup_dir}/backup_log.txt", "w") as f:
+        f.write("Backup complete.")
+    
+    # 3. Deploy
+    print("Deploying to production server...")
+    # In real life, this might use 'scp' or 'rsync'
+    print("🚀 Deployment Complete!")
+
+if __name__ == "__main__":
+    deploy()</code></pre>
+
+            <h2>3. Why Python for DevOps?</h2>
+            <p>Bash scripts are great, but Python gives you better logic, error handling, and libraries. It's the
+                language of choice for cloud automation.</p>
+
+            <div class="page-nav-links">
+                <a href="data_pipeline.html" class="page-nav-link">
+                    <small>Previous Project</small>
+                    <span>Data Pipeline</span>
+                </a>
+                <a href="../../index.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Course Complete</small>
+                    <span>Return to Dashboard →</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../../index.html">Home</a> | <a href="../../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

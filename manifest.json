@@ -4,8 +4,8 @@
     "description": "Interactive Python learning platform",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#0d1117",
-    "theme_color": "#58a6ff",
+    "background_color": "#0f172a",
+    "theme_color": "#3b82f6",
     "icons": [
         {
             "src": "icon-192.png",
@@ -18,5 +18,4 @@
             "type": "image/png"
         }
     ]
-}</content>
-<parameter name="filePath">manifest.json
+}

@@ -1,109 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Scraper Project - Learn Python</title>
+    <title>Project: Web Scraper | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <script src="../../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../../index.html#basics">Basics</a>
-        <a href="../../index.html#intermediate">Intermediate</a>
-        <a href="../../index.html#projects">Projects</a>
-        <a href="../../index.html#advanced">Advanced</a>
-        <a href="../../index.html#resources">Resources</a>
-        <a href="../../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Web Scraper with Rate Limiting</h2>
-            <p>Create a tool to extract data from websites responsibly. This project demonstrates web scraping, HTML parsing, and ethical automation practices.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../../index.html#basics">Basics</a>
+                    <a href="../../index.html#intermediate">Intermediate</a>
+                    <a href="../../index.html#projects">Projects</a>
+                    <a href="../../index.html#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>Project Requirements</h3>
-            <ul>
-                <li>Fetch web pages using requests library</li>
-                <li>Parse HTML content with BeautifulSoup</li>
-                <li>Implement rate limiting to avoid overwhelming servers</li>
-                <li>Handle common scraping challenges (User-Agent, delays)</li>
-                <li>Save extracted data to a file or database</li>
-            </ul>
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Projects</h3>
+            <a href="../calculator.html">Calculator</a>
+            <a href="../todo_app.html">Todo App</a>
+            <a href="../data_analysis.html">Data Analysis</a>
 
-            <h3>Sample Implementation</h3>
-            <div class="example">
-                <h4>scraper.py</h4>
-                <pre><code>import requests
-from bs4 import BeautifulSoup
-import time
-import csv
+            <h3>Advanced Projects</h3>
+            <a href="web_scraper.html" class="active">Web Scraper</a>
+            <a href="rest_api.html">REST API</a>
+            <a href="chat_app.html">Chat App</a>
+            <a href="data_pipeline.html">Data Pipeline</a>
+            <a href="deployment_script.html">Deployment Script</a>
+        </aside>
 
-def scrape_quotes(url, max_pages=5):
-    quotes = []
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-    }
-    
-    for page in range(1, max_pages + 1):
-        try:
-            response = requests.get(f"{url}/page/{page}/", headers=headers)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.content, 'html.parser')
-            quote_elements = soup.find_all('div', class_='quote')
-            
-            for quote_elem in quote_elements:
-                text = quote_elem.find('span', class_='text').get_text()
-                author = quote_elem.find('small', class_='author').get_text()
-                quotes.append({'text': text, 'author': author})
-            
-            # Rate limiting - wait 1 second between requests
-            time.sleep(1)
-            
-        except requests.RequestException as e:
-            print(f"Error scraping page {page}: {e}")
-            break
-    
-    return quotes
-
-def save_to_csv(quotes, filename='quotes.csv'):
-    if not quotes:
-        return
-    
-    with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['text', 'author']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(quotes)
-
-if __name__ == "__main__":
-    url = "http://quotes.toscrape.com"
-    quotes = scrape_quotes(url)
-    save_to_csv(quotes)
-    print(f"Scraped {len(quotes)} quotes and saved to quotes.csv")</code></pre>
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../../index.html">Home</a> <span>/</span> Advanced <span>/</span> Web Scraper
             </div>
 
-            <h3>Extensions</h3>
+            <h1>Project: Web Scraper</h1>
+            <p>The web is full of data. Learn how to write a script that visits websites and extracts the information
+                you need automatically.</p>
+
+            <h2>1. The Tools</h2>
+            <p>We'll use two popular libraries:</p>
             <ul>
-                <li>Add proxy rotation for large-scale scraping</li>
-                <li>Implement headless browser scraping with Selenium</li>
-                <li>Add data cleaning and validation</li>
-                <li>Create a web interface for the scraper</li>
-                <li>Store data in a database instead of CSV</li>
+                <li><strong>requests</strong>: To download the HTML of a page.</li>
+                <li><strong>BeautifulSoup</strong>: To find specific data inside that HTML.</li>
             </ul>
-        </section>
-    </main>
+
+            <h2>2. The Code</h2>
+            <pre><code class="language-python">import requests
+from bs4 import BeautifulSoup
+import time
+
+def get_quotes():
+    # Target Website (Safe for scraping tests)
+    url = "http://quotes.toscrape.com"
+    
+    # 1. Get the page
+    response = requests.get(url)
+    
+    # 2. Parse HTML
+    soup = BeautifulSoup(response.text, "html.parser")
+    
+    # 3. Find elements
+    quotes = soup.find_all("div", class_="quote")
+    
+    for quote in quotes:
+        text = quote.find("span", class_="text").text
+        author = quote.find("small", class_="author").text
+        print(f"\"{text}\" - {author}")
+
+        # Be nice to the server!
+        time.sleep(0.5)
+
+if __name__ == "__main__":
+    get_quotes()</code></pre>
+
+            <div class="card" style="border-left: 4px solid #f43f5e; background: rgba(244, 63, 94, 0.1);">
+                <p style="margin:0; color: #ffe4e6;"><strong>⚠️ Ethics Check:</strong> Always check a website's
+                    <code>robots.txt</code> file before scraping. Don't hit servers too fast; use
+                    <code>time.sleep()</code> to be polite.
+                </p>
+            </div>
+
+            <h2>3. Next Steps</h2>
+            <p>Try saving the data to a CSV file using Python's <code>csv</code> module instead of just printing it.</p>
+
+            <div class="page-nav-links">
+                <a href="../data_analysis.html" class="page-nav-link">
+                    <small>Previous Project</small>
+                    <span>Data Analysis</span>
+                </a>
+                <a href="rest_api.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Next Challenge</small>
+                    <span>Build a REST API →</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../../index.html">Home</a> | <a href="../../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

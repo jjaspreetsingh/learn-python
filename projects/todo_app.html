@@ -1,190 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App Project - Learn Python</title>
+    <title>Project: Todo App | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
-    <script src="todo.js" defer></script>
+    <script src="../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../index.html#basics">Basics</a>
-        <a href="../index.html#intermediate">Intermediate</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#advanced">Advanced</a>
-        <a href="../index.html#resources">Resources</a>
-        <a href="../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Todo App Project</h2>
-            <p>Create a command-line task management application. This project demonstrates classes, file handling, and user interface design.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../index.html#basics">Basics</a>
+                    <a href="../index.html#intermediate">Intermediate</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>Project Features</h3>
-            <ul>
-                <li>Add new tasks</li>
-                <li>View all tasks</li>
-                <li>Mark tasks as completed</li>
-                <li>Delete tasks</li>
-                <li>Save/load tasks from file</li>
-                <li>Simple text-based menu</li>
-            </ul>
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Basics</h3>
+            <a href="../basics/variables.html">Variables & Types</a>
+            <a href="../basics/conditionals.html">Logic & If/Else</a>
+            <a href="../basics/loops.html">Loops</a>
 
-            <h3>Try It Yourself</h3>
-            <div class="todo-container">
-                <input type="text" id="task-input" placeholder="Add a new task...">
-                <button id="add-task-btn">Add Task</button>
-                <ul id="task-list"></ul>
+            <h3>Intermediate</h3>
+            <a href="../intermediate/functions.html">Functions</a>
+            <a href="../intermediate/classes.html">Classes (OOP)</a>
+            <a href="../intermediate/file_handling.html">File Handling</a>
+            <a href="../intermediate/modules.html">Modules & Pip</a>
+
+            <h3>Projects</h3>
+            <a href="calculator.html">Calculator</a>
+            <a href="todo_app.html" class="active">Todo App</a>
+            <a href="data_analysis.html">Data Analysis</a>
+        </aside>
+
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> <span>/</span> Projects <span>/</span> Todo App
             </div>
 
-            <h3>Class Design</h3>
-            <div class="example">
-                <h4>todo.py</h4>
-                <pre><code>import json
-import os
+            <h1>Project: Todo List App</h1>
+            <p>Every programmer builds a Todo App. It's the "Hello World" of real applications. You'll learn to manage a
+                list of data.</p>
 
-class Task:
-    def __init__(self, description, completed=False):
-        self.description = description
-        self.completed = completed
+            <h2>1. The Plan</h2>
+            <ol>
+                <li>Create an empty list to store tasks.</li>
+                <li>Create a loop that asks the user what they want to do (Add, View, or Quit).</li>
+                <li>Write functions for each action.</li>
+            </ol>
 
-    def __str__(self):
-        status = "✓" if self.completed else "○"
-        return f"{status} {self.description}"
+            <h2>2. The Code</h2>
 
-class TodoList:
-    def __init__(self, filename="tasks.json"):
-        self.filename = filename
-        self.tasks = []
-        self.load_tasks()
+            <pre><code class="language-python">tasks = []
 
-    def add_task(self, description):
-        self.tasks.append(Task(description))
-        self.save_tasks()
+def show_tasks():
+    if not tasks:
+        print("Your list is empty.")
+    else:
+        print("\nTo-Do List:")
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task}")
+    print()
 
-    def complete_task(self, index):
-        if 0 <= index < len(self.tasks):
-            self.tasks[index].completed = True
-            self.save_tasks()
-            return True
-        return False
+while True:
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Quit")
+    
+    choice = input("Enter choice: ")
+    
+    if choice == '1':
+        item = input("Enter task: ")
+        tasks.append(item)
+        print("Task added!")
+    elif choice == '2':
+        show_tasks()
+    elif choice == '3':
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice.")</code></pre>
 
-    def delete_task(self, index):
-        if 0 <= index < len(self.tasks):
-            del self.tasks[index]
-            self.save_tasks()
-            return True
-        return False
-
-    def get_pending_tasks(self):
-        return [task for task in self.tasks if not task.completed]
-
-    def get_completed_tasks(self):
-        return [task for task in self.tasks if task.completed]
-
-    def save_tasks(self):
-        data = [{"description": task.description, "completed": task.completed}
-                for task in self.tasks]
-        with open(self.filename, 'w') as f:
-            json.dump(data, f)
-
-    def load_tasks(self):
-        if os.path.exists(self.filename):
-            with open(self.filename, 'r') as f:
-                data = json.load(f)
-                self.tasks = [Task(item['description'], item['completed'])
-                            for item in data]
-
-def main():
-    todo = TodoList()
-
-    while True:
-        print("\n=== Todo List ===")
-        print("1. View all tasks")
-        print("2. Add task")
-        print("3. Complete task")
-        print("4. Delete task")
-        print("5. Exit")
-
-        choice = input("Choose an option: ")
-
-        if choice == "1":
-            if not todo.tasks:
-                print("No tasks yet!")
-            else:
-                for i, task in enumerate(todo.tasks):
-                    print(f"{i+1}. {task}")
-
-        elif choice == "2":
-            description = input("Enter task description: ")
-            todo.add_task(description)
-            print("Task added!")
-
-        elif choice == "3":
-            if not todo.get_pending_tasks():
-                print("No pending tasks!")
-            else:
-                for i, task in enumerate(todo.tasks):
-                    if not task.completed:
-                        print(f"{i+1}. {task}")
-                try:
-                    index = int(input("Enter task number to complete: ")) - 1
-                    if todo.complete_task(index):
-                        print("Task completed!")
-                    else:
-                        print("Invalid task number!")
-                except ValueError:
-                    print("Please enter a valid number!")
-
-        elif choice == "4":
-            if not todo.tasks:
-                print("No tasks to delete!")
-            else:
-                for i, task in enumerate(todo.tasks):
-                    print(f"{i+1}. {task}")
-                try:
-                    index = int(input("Enter task number to delete: ")) - 1
-                    if todo.delete_task(index):
-                        print("Task deleted!")
-                    else:
-                        print("Invalid task number!")
-                except ValueError:
-                    print("Please enter a valid number!")
-
-        elif choice == "5":
-            print("Goodbye!")
-            break
-
-        else:
-            print("Invalid choice!")
-
-if __name__ == "__main__":
-    main()</code></pre>
+            <div class="card" style="border-left: 4px solid #38bdf8; background: rgba(56, 189, 248, 0.1);">
+                <p style="margin:0; color: #e0f2fe;"><strong>Pro Tip:</strong> <code>enumerate(tasks, 1)</code> gives
+                    you both the index (counting from 1) and the item, which is perfect for numbered lists.</p>
             </div>
 
-            <h3>Extensions</h3>
-            <ul>
-                <li>Add due dates and priorities</li>
-                <li>Create a GUI version with tkinter</li>
-                <li>Add categories/tags for tasks</li>
-                <li>Implement search functionality</li>
-                <li>Add task sorting and filtering</li>
-            </ul>
-        </section>
-    </main>
+            <h2>3. Challenge</h2>
+            <p>Add a "Delete Task" feature! You'll need to ask the user which number to remove and use
+                <code>tasks.pop()</code>.
+            </p>
+
+            <div class="page-nav-links">
+                <a href="calculator.html" class="page-nav-link">
+                    <small>Previous Project</small>
+                    <span>Calculator</span>
+                </a>
+                <a href="../index.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Back Home</small>
+                    <span>Return to Dashboard →</span>
+                </a>
+            </div>
+
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../index.html">Home</a> | <a href="../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

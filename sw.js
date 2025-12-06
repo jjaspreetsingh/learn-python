@@ -1,4 +1,4 @@
-const CACHE_NAME = 'learn-python-v1';
+const CACHE_NAME = 'learn-python-v2';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -13,11 +13,9 @@ self.addEventListener('install', event => {
             .then(cache => cache.addAll(urlsToCache))
     );
 });
-
 self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
             .then(response => response || fetch(event.request))
     );
-});</content>
-<parameter name="filePath">sw.js
+});

@@ -1,134 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classes & Objects - Learn Python</title>
+    <title>Classes & OOP | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../index.html#basics">Basics</a>
-        <a href="../index.html#intermediate">Intermediate</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#advanced">Advanced</a>
-        <a href="../index.html#resources">Resources</a>
-        <a href="../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Classes & Objects</h2>
-            <p>Classes are blueprints for creating objects. Objects are instances of classes that bundle data (attributes) and functions (methods) together.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../index.html#basics">Basics</a>
+                    <a href="../index.html#intermediate">Intermediate</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>Defining a Class</h3>
-            <p>Use the <code>class</code> keyword to define a class:</p>
-            <pre><code>class ClassName:
-    # class attributes and methods</code></pre>
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Basics</h3>
+            <a href="../basics/variables.html">Variables & Types</a>
+            <a href="../basics/conditionals.html">Logic & If/Else</a>
+            <a href="../basics/loops.html">Loops</a>
 
-            <div class="example">
-                <h4>Example:</h4>
-                <pre><code>class Dog:
+            <h3>Intermediate</h3>
+            <a href="functions.html">Functions</a>
+            <a href="classes.html" class="active">Classes (OOP)</a>
+            <a href="file_handling.html">File Handling</a>
+            <a href="modules.html">Modules & Pip</a>
+
+            <h3>Projects</h3>
+            <a href="../projects/calculator.html">Calculator</a>
+            <a href="../projects/todo_app.html">Todo App</a>
+            <a href="../projects/data_analysis.html">Data Analysis</a>
+        </aside>
+
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> <span>/</span> Intermediate <span>/</span> Classes
+            </div>
+
+            <h1>Classes & Objects</h1>
+            <p>Object-Oriented Programming (OOP) allows you to model real-world things in your code. A
+                <strong>Class</strong> is a blueprint; an <strong>Object</strong> is a house built from that blueprint.
+            </p>
+
+            <h2>1. The Blueprint (Class)</h2>
+            <p>We define a class using the <code>class</code> keyword. Inside, we define functions (methods) and data
+                (attributes).</p>
+
+            <pre><code class="language-python">class Dog:
     def __init__(self, name, breed):
         self.name = name
         self.breed = breed
-
+    
     def bark(self):
-        return f"{self.name} says woof!"
+        return "Woof! I am " + self.name</code></pre>
 
-# Creating an object
-my_dog = Dog("Buddy", "Golden Retriever")
-print(my_dog.name)  # Output: Buddy
-print(my_dog.bark())  # Output: Buddy says woof!</code></pre>
+            <div class="card" style="border-left: 4px solid #8b5cf6; background: rgba(139, 92, 246, 0.1);">
+                <p style="margin:0; color: #ede9fe;"><strong>Concept:</strong> <code>__init__</code> is a special method
+                    (constructor) that runs automatically when you create a new object. <code>self</code> refers to the
+                    specific object being created.</p>
             </div>
 
-            <h3>The __init__ Method</h3>
-            <p>The <code>__init__</code> method is a special method called when an object is created. It's used to initialize attributes.</p>
+            <h2>2. Creating Objects</h2>
+            <p>Now we can create "instances" of our Dog class.</p>
 
-            <h3>Self Parameter</h3>
-            <p><code>self</code> refers to the current instance of the class. It's the first parameter in instance methods.</p>
+            <pre><code class="language-python"># Create two dogs
+dog1 = Dog("Buddy", "Golden Retriever")
+dog2 = Dog("Rex", "German Shepherd")
 
-            <h3>Instance Methods</h3>
-            <p>Methods that operate on instance data:</p>
-            <div class="example">
-                <h4>Example:</h4>
-                <pre><code>class Rectangle:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+print(dog1.bark()) # Output: Woof! I am Buddy
+print(dog2.breed)  # Output: German Shepherd</code></pre>
 
-    def area(self):
-        return self.width * self.height
+            <h2>3. Why use Classes?</h2>
+            <p>Classes help organize complex code. Instead of having loose variables like <code>dog1_name</code>,
+                <code>dog1_breed</code>, <code>dog2_name</code>, etc., you group related data and behavior together.
+            </p>
 
-    def perimeter(self):
-        return 2 * (self.width + self.height)
-
-rect = Rectangle(5, 3)
-print(rect.area())  # Output: 15
-print(rect.perimeter())  # Output: 16</code></pre>
+            <div class="page-nav-links">
+                <a href="functions.html" class="page-nav-link">
+                    <small>Previous Lesson</small>
+                    <span>Functions</span>
+                </a>
+                <a href="file_handling.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Next Lesson</small>
+                    <span>File Handling →</span>
+                </a>
             </div>
 
-            <h3>Class Attributes vs Instance Attributes</h3>
-            <ul>
-                <li><strong>Class attributes:</strong> Shared by all instances</li>
-                <li><strong>Instance attributes:</strong> Unique to each instance</li>
-            </ul>
-
-            <div class="example">
-                <h4>Example:</h4>
-                <pre><code>class Car:
-    wheels = 4  # Class attribute
-
-    def __init__(self, color):
-        self.color = color  # Instance attribute
-
-car1 = Car("red")
-car2 = Car("blue")
-
-print(car1.wheels)  # Output: 4
-print(car2.wheels)  # Output: 4
-print(car1.color)   # Output: red
-print(car2.color)   # Output: blue</code></pre>
-            </div>
-
-            <h3>Inheritance</h3>
-            <p>Classes can inherit attributes and methods from other classes:</p>
-            <div class="example">
-                <h4>Example:</h4>
-                <pre><code>class Animal:
-    def __init__(self, name):
-        self.name = name
-
-    def speak(self):
-        pass
-
-class Dog(Animal):
-    def speak(self):
-        return f"{self.name} says woof!"
-
-class Cat(Animal):
-    def speak(self):
-        return f"{self.name} says meow!"
-
-dog = Dog("Buddy")
-cat = Cat("Whiskers")
-
-print(dog.speak())  # Output: Buddy says woof!
-print(cat.speak())  # Output: Whiskers says meow!</code></pre>
-            </div>
-        </section>
-    </main>
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../index.html">Home</a> | <a href="../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

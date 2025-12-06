@@ -1,109 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REST API Project - Learn Python</title>
+    <title>Project: REST API | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <script src="../../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../../index.html#basics">Basics</a>
-        <a href="../../index.html#intermediate">Intermediate</a>
-        <a href="../../index.html#projects">Projects</a>
-        <a href="../../index.html#advanced">Advanced</a>
-        <a href="../../index.html#resources">Resources</a>
-        <a href="../../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>REST API with Flask/FastAPI</h2>
-            <p>Build a web API that handles HTTP requests and responses. This project demonstrates server-side development, data serialization, and RESTful design principles.</p>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../../index.html#basics">Basics</a>
+                    <a href="../../index.html#intermediate">Intermediate</a>
+                    <a href="../../index.html#projects">Projects</a>
+                    <a href="../../index.html#resources">Resources</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>Project Requirements</h3>
-            <ul>
-                <li>Create endpoints for CRUD operations (Create, Read, Update, Delete)</li>
-                <li>Handle JSON data serialization</li>
-                <li>Implement proper HTTP status codes</li>
-                <li>Add input validation and error handling</li>
-                <li>Use a simple in-memory data store</li>
-            </ul>
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Projects</h3>
+            <a href="../calculator.html">Calculator</a>
+            <a href="../todo_app.html">Todo App</a>
+            <a href="../data_analysis.html">Data Analysis</a>
 
-            <h3>Sample Implementation (Flask)</h3>
-            <div class="example">
-                <h4>api.py</h4>
-                <pre><code>from flask import Flask, request, jsonify
+            <h3>Advanced Projects</h3>
+            <a href="web_scraper.html">Web Scraper</a>
+            <a href="rest_api.html" class="active">REST API</a>
+            <a href="chat_app.html">Chat App</a>
+            <a href="data_pipeline.html">Data Pipeline</a>
+            <a href="deployment_script.html">Deployment Script</a>
+        </aside>
+
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../../index.html">Home</a> <span>/</span> Advanced <span>/</span> REST API
+            </div>
+
+            <h1>Project: Build an API</h1>
+            <p>Websites talk to servers using <strong>APIs</strong> (Application Programming Interfaces). Let's build a
+                simple one using Flask.</p>
+
+            <h2>1. Setup</h2>
+            <pre><code class="language-bash">pip install flask</code></pre>
+
+            <h2>2. The Code</h2>
+            <p>This simple app lets you get a list of items and add new ones.</p>
+
+            <pre><code class="language-python">from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-items = []
+# Simple in-memory database
+items = [{"id": 1, "name": "Potion"}, {"id": 2, "name": "Sword"}]
 
 @app.route('/items', methods=['GET'])
 def get_items():
     return jsonify(items)
 
 @app.route('/items', methods=['POST'])
-def create_item():
-    data = request.get_json()
-    if not data or 'name' not in data:
-        return jsonify({'error': 'Name is required'}), 400
-    
-    item = {'id': len(items) + 1, 'name': data['name']}
-    items.append(item)
-    return jsonify(item), 201
-
-@app.route('/items/&lt;int:item_id&gt;', methods=['GET'])
-def get_item(item_id):
-    item = next((item for item in items if item['id'] == item_id), None)
-    if item is None:
-        return jsonify({'error': 'Item not found'}), 404
-    return jsonify(item)
-
-@app.route('/items/&lt;int:item_id&gt;', methods=['PUT'])
-def update_item(item_id):
-    item = next((item for item in items if item['id'] == item_id), None)
-    if item is None:
-        return jsonify({'error': 'Item not found'}), 404
-    
-    data = request.get_json()
-    if not data or 'name' not in data:
-        return jsonify({'error': 'Name is required'}), 400
-    
-    item['name'] = data['name']
-    return jsonify(item)
-
-@app.route('/items/&lt;int:item_id&gt;', methods=['DELETE'])
-def delete_item(item_id):
-    global items
-    items = [item for item in items if item['id'] != item_id]
-    return '', 204
+def add_item():
+    new_item = request.get_json()
+    items.append(new_item)
+    return jsonify(new_item), 201
 
 if __name__ == '__main__':
     app.run(debug=True)</code></pre>
+
+            <h2>3. Testing</h2>
+            <p>You can test your API using a browser (for GET requests) or tools like Postman or `curl`.</p>
+            <pre><code class="language-bash"># Get items
+curl http://127.0.0.1:5000/items
+
+# Add item
+curl -X POST -H "Content-Type: application/json" -d '{"id": 3, "name": "Shield"}' http://127.0.0.1:5000/items</code></pre>
+
+            <div class="page-nav-links">
+                <a href="web_scraper.html" class="page-nav-link">
+                    <small>Previous Challenge</small>
+                    <span>Web Scraper</span>
+                </a>
+                <a href="chat_app.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Next Challenge</small>
+                    <span>Real-time Chat App →</span>
+                </a>
             </div>
 
-            <h3>Extensions</h3>
-            <ul>
-                <li>Add authentication and authorization</li>
-                <li>Integrate with a database (SQLite, PostgreSQL)</li>
-                <li>Implement pagination for large datasets</li>
-                <li>Add API documentation with Swagger/OpenAPI</li>
-                <li>Deploy to a cloud platform (Heroku, AWS)</li>
-            </ul>
-        </section>
-    </main>
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../../index.html">Home</a> | <a href="../../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Handling | Learn Python</title>
+    <title>Modules & Pip | Learn Python</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -40,8 +40,8 @@
             <h3>Intermediate</h3>
             <a href="functions.html">Functions</a>
             <a href="classes.html">Classes (OOP)</a>
-            <a href="file_handling.html" class="active">File Handling</a>
-            <a href="modules.html">Modules & Pip</a>
+            <a href="file_handling.html">File Handling</a>
+            <a href="modules.html" class="active">Modules & Pip</a>
 
             <h3>Projects</h3>
             <a href="../projects/calculator.html">Calculator</a>
@@ -51,49 +51,47 @@
 
         <main class="doc-content">
             <div class="breadcrumb">
-                <a href="../index.html">Home</a> <span>/</span> Intermediate <span>/</span> Files
+                <a href="../index.html">Home</a> <span>/</span> Intermediate <span>/</span> Modules
             </div>
 
-            <h1>File Handling</h1>
-            <p>Programs often need to save data so it isn't lost when the computer turns off. Python makes reading and
-                writing files very easy.</p>
+            <h1>Modules & Libraries</h1>
+            <p>You don't have to write everything yourself. Python has a massive ecosystem of <strong>Modules</strong>
+                (libraries) that you can import and use.</p>
 
-            <h2>1. Reading a File</h2>
-            <p>We use the <code>open()</code> function. It's best practice to use the <code>with</code> statement, which
-                automatically closes the file for you.</p>
+            <h2>1. Importing Modules</h2>
+            <p>Python comes with "batteries included". You can use built-in modules like <code>math</code>,
+                <code>random</code>, or <code>datetime</code> immediately.
+            </p>
 
-            <pre><code class="language-python"># 'r' stands for Read mode
-with open("example.txt", "r") as file:
-    content = file.read()
-    print(content)</code></pre>
+            <pre><code class="language-python">import math
+import random
 
-            <h2>2. Writing to a File</h2>
-            <p>Use <code>"w"</code> for write mode. Be careful: this overwrites the existing file!</p>
+print(math.sqrt(16))      # Output: 4.0
+print(random.randint(1, 10)) # Output: Random number 1-10</code></pre>
 
-            <pre><code class="language-python"># 'w' stands for Write mode
-with open("note.txt", "w") as file:
-    file.write("This is a new note.\n")
-    file.write("Don't forget to study Python!")</code></pre>
+            <h2>2. Pip: The Package Installer</h2>
+            <p>To use code from other people (like for web development or data science), you install it using
+                <code>pip</code> in your terminal.
+            </p>
 
-            <div class="card" style="border-left: 4px solid #f43f5e; background: rgba(244, 63, 94, 0.1);">
-                <p style="margin:0; color: #ffe4e6;"><strong>Warning:</strong> Opening a file in "w" mode deletes
-                    everything inside it first. To add to the end of a file without deleting, use "a" (Append) mode.</p>
-            </div>
+            <pre><code class="language-bash">pip install requests
+pip install pandas</code></pre>
 
-            <h2>3. Append Mode</h2>
-            <pre><code class="language-python"># 'a' stands for Append mode
-with open("log.txt", "a") as file:
-    file.write("New entry added.\n")</code></pre>
+            <h2>3. Using Installed Packages</h2>
+            <pre><code class="language-python">import requests
+
+response = requests.get("https://www.google.com")
+print(response.status_code) # Output: 200 (OK)</code></pre>
 
             <div class="page-nav-links">
-                <a href="classes.html" class="page-nav-link">
+                <a href="file_handling.html" class="page-nav-link">
                     <small>Previous Lesson</small>
-                    <span>Classes & Objects</span>
+                    <span>File Handling</span>
                 </a>
                 <a href="../projects/calculator.html" class="page-nav-link"
                     style="text-align: right; align-items: flex-end;">
                     <small>Start Building</small>
-                    <span>First Project: Calculator →</span>
+                    <span>Projects: Calculator →</span>
                 </a>
             </div>
 

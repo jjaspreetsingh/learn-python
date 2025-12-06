@@ -1,198 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analysis Project - Learn Python</title>
+    <title>Project: Data Analysis | Learn Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <script src="../script.js" defer></script>
 </head>
+
 <body>
-<header>
-    <h1>Learn Python</h1>
-    <nav>
-        <a href="../index.html#basics">Basics</a>
-        <a href="../index.html#intermediate">Intermediate</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#advanced">Advanced</a>
-        <a href="../index.html#resources">Resources</a>
-        <a href="../index.html#community">Community</a>
-    </nav>
-</header>
 
-    <main>
-        <section>
-            <h2>Data Analysis Project</h2>
-            <p>Learn data analysis basics by working with sample datasets. This project introduces pandas, numpy, and matplotlib for data manipulation and visualization.</p>
-
-            <h3>Prerequisites</h3>
-            <p>Install required libraries:</p>
-            <pre><code>pip install pandas numpy matplotlib</code></pre>
-
-            <h3>Sample Dataset</h3>
-            <p>Let's work with a simple CSV file containing student grades:</p>
-            <div class="data-container">
-                <table id="grades-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Math</th>
-                            <th>Science</th>
-                            <th>English</th>
-                            <th>Overall</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Alice</td>
-                            <td>85</td>
-                            <td>92</td>
-                            <td>88</td>
-                            <td>88.3</td>
-                        </tr>
-                        <tr>
-                            <td>Bob</td>
-                            <td>78</td>
-                            <td>85</td>
-                            <td>90</td>
-                            <td>84.3</td>
-                        </tr>
-                        <tr>
-                            <td>Charlie</td>
-                            <td>92</td>
-                            <td>88</td>
-                            <td>85</td>
-                            <td>88.3</td>
-                        </tr>
-                        <tr>
-                            <td>Diana</td>
-                            <td>88</td>
-                            <td>90</td>
-                            <td>92</td>
-                            <td>90.0</td>
-                        </tr>
-                        <tr>
-                            <td>Eve</td>
-                            <td>75</td>
-                            <td>82</td>
-                            <td>78</td>
-                            <td>78.3</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="chart-container">
-                    <h4>Average Scores by Subject</h4>
-                    <div class="bar-chart">
-                        <div class="bar" data-value="83.6">
-                            <span class="bar-label">Math</span>
-                            <div class="bar-fill" style="height: 83.6%"></div>
-                            <span class="bar-value">83.6</span>
-                        </div>
-                        <div class="bar" data-value="87.4">
-                            <span class="bar-label">Science</span>
-                            <div class="bar-fill" style="height: 87.4%"></div>
-                            <span class="bar-value">87.4</span>
-                        </div>
-                        <div class="bar" data-value="86.6">
-                            <span class="bar-label">English</span>
-                            <div class="bar-fill" style="height: 86.6%"></div>
-                            <span class="bar-value">86.6</span>
-                        </div>
-                    </div>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Learn Python</div>
+                <div class="nav-links">
+                    <a href="../index.html#basics">Basics</a>
+                    <a href="../index.html#intermediate">Intermediate</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#resources">Resources</a>
                 </div>
-            </div>
-            <div class="example">
-                <h4>grades.csv</h4>
-                <pre><code>Name,Math,Science,English
-Alice,85,92,88
-Bob,78,85,90
-Charlie,92,88,85
-Diana,88,90,92
-Eve,75,82,78</code></pre>
-            </div>
+            </nav>
+        </div>
+    </header>
 
-            <h3>Basic Data Analysis</h3>
-            <div class="example">
-                <h4>data_analysis.py</h4>
-                <pre><code>import pandas as pd
-import numpy as np
+    <div class="doc-wrapper">
+        <aside class="doc-sidebar">
+            <h3>Basics</h3>
+            <a href="../basics/variables.html">Variables & Types</a>
+            <a href="../basics/conditionals.html">Logic & If/Else</a>
+            <a href="../basics/loops.html">Loops</a>
 
-# Load data
-df = pd.read_csv('grades.csv')
+            <h3>Intermediate</h3>
+            <a href="../intermediate/functions.html">Functions</a>
+            <a href="../intermediate/classes.html">Classes (OOP)</a>
+            <a href="../intermediate/file_handling.html">File Handling</a>
+            <a href="../intermediate/modules.html">Modules & Pip</a>
 
-# Display basic information
-print("Dataset Info:")
-print(df.info())
-print("\nFirst 5 rows:")
-print(df.head())
+            <h3>Projects</h3>
+            <a href="calculator.html">Calculator</a>
+            <a href="todo_app.html">Todo App</a>
+            <a href="data_analysis.html" class="active">Data Analysis</a>
+        </aside>
 
-# Calculate averages
-print("\nAverage scores:")
-print(df[['Math', 'Science', 'English']].mean())
-
-# Find highest scorer in each subject
-print("\nHighest scores:")
-for subject in ['Math', 'Science', 'English']:
-    max_score = df[subject].max()
-    student = df[df[subject] == max_score]['Name'].values[0]
-    print(f"{subject}: {student} ({max_score})")
-
-# Calculate overall average for each student
-df['Overall'] = df[['Math', 'Science', 'English']].mean(axis=1)
-print("\nOverall averages:")
-print(df[['Name', 'Overall']])</code></pre>
+        <main class="doc-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> <span>/</span> Projects <span>/</span> Data Analysis
             </div>
 
-            <h3>Data Visualization</h3>
-            <div class="example">
-                <h4>visualization.py</h4>
-                <pre><code>import matplotlib.pyplot as plt
+            <h1>Project: Simple Data Analysis</h1>
+            <p>Python is the #1 language for Data Science. Let's do some basic analysis without any fancy libraries
+                first.</p>
 
-# Bar chart of averages
-subjects = ['Math', 'Science', 'English']
-averages = df[subjects].mean()
+            <h2>1. The Dataset</h2>
+            <p>Imagine we have a list of student scores.</p>
+            <pre><code class="language-python">scores = [88, 92, 79, 93, 85, 91, 76, 95]</code></pre>
 
-plt.figure(figsize=(10, 6))
-plt.bar(subjects, averages, color=['blue', 'green', 'red'])
-plt.title('Average Scores by Subject')
-plt.ylabel('Average Score')
-plt.ylim(0, 100)
+            <h2>2. Analysis Functions</h2>
+            <p>Let's calculate the <strong>Mean</strong> (Average) and find the <strong>Max</strong> score.</p>
 
-for i, v in enumerate(averages):
-    plt.text(i, v + 1, f'{v:.1f}', ha='center')
+            <pre><code class="language-python">def calculate_average(data):
+    total = sum(data)
+    count = len(data)
+    return total / count
 
-plt.show()
+average = calculate_average(scores)
+highest = max(scores)
+lowest = min(scores)
 
-# Scatter plot
-plt.figure(figsize=(8, 6))
-plt.scatter(df['Math'], df['Science'])
-plt.title('Math vs Science Scores')
-plt.xlabel('Math Score')
-plt.ylabel('Science Score')
+print(f"Average Score: {average}")
+print(f"Highest Score: {highest}")
+print(f"Lowest Score: {lowest}")</code></pre>
 
-# Add student names as labels
-for i, name in enumerate(df['Name']):
-    plt.annotate(name, (df['Math'][i], df['Science'][i]))
+            <h2>3. Using Standard Libraries</h2>
+            <p>Python has a built-in statistics module.</p>
+            <pre><code class="language-python">import statistics
 
-plt.show()</code></pre>
+print(f"Median: {statistics.median(scores)}")
+print(f"StDev: {statistics.stdev(scores)}")</code></pre>
+
+            <div class="page-nav-links">
+                <a href="todo_app.html" class="page-nav-link">
+                    <small>Previous Project</small>
+                    <span>Todo App</span>
+                </a>
+                <a href="../index.html" class="page-nav-link" style="text-align: right; align-items: flex-end;">
+                    <small>Module Complete</small>
+                    <span>Return Home →</span>
+                </a>
             </div>
 
-            <h3>Advanced Analysis</h3>
-            <ul>
-                <li>Calculate grade distributions (A, B, C, D, F)</li>
-                <li>Find correlations between subjects</li>
-                <li>Create histograms of score distributions</li>
-                <li>Implement statistical tests</li>
-            </ul>
-        </section>
-    </main>
+        </main>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <a href="../index.html">Home</a> | <a href="../index.html#sitemap">Sitemap</a>
-            <p>Author: <a href="https://jjaspreetsingh.com" target="_blank">jaspreet</a></p>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Learn Python</p>
         </div>
-        <p>Happy coding! 🚀</p>
-<p>&copy; 2025 All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>
